@@ -1,18 +1,16 @@
 import React from 'react';
-import CourseTable from './CourseTable';
-import Navigation from '../components/Navigation';
-import CourseTitle from '../components/CourseTitle';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import CourseList from './CourseList';
+import CourseEditor from './CourseEditor';
 export default class CourseManager extends React.Component {
     render() {
         return (
-                <div>
-                    <Navigation/>
-                    <CourseTitle/>
-                    <CourseTable/>
-                    <button className="btn btn_transparent float-right icon_low_right">
-                        <i className="fa fa-plus-circle fa-4x red "></i>
-                    </button>
+            <Router>
+                <div className="container-fluid">
+                    <Route path="/courses" component={CourseList}/>
+                    <Route path="/courseEditor/:course_id" component={CourseEditor}/>
                 </div>
+            </Router>
         );
     }
 }

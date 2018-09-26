@@ -1,27 +1,15 @@
 import React from 'react';
 import CourseRow from '../components/CourseRow';
-import CourseService from '../services/CourseService'
 export default class CourseTable extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {courses:[]}
-        this.courseService = CourseService.instance;
+    constructor(props) {
+        super(props);
     }
 
-
-    findAllCourses() {
-        var courses = this.courseService.findAllCourse();
-        this.setState({courses:courses});
-    }
-
-    componentDidMount() {
-        this.findAllCourses();
-    }
 
     renderList() {
-        var module = this.state.courses.map((course,index) => {
-            return <CourseRow title={course.title} key={index}/>
+        var module = this.props.courses.map((course,index) => {
+            return <CourseRow title={course.title} id={course.id} key={index} deleteCourse={this.props.deleteCourse}/>
         });
         return module;
     }

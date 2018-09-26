@@ -45,7 +45,7 @@ var allCourses = [
         ]
     },
     {
-        "id": "123",
+        "id": "456",
         "title": "CS5200",
         "modules": [
             {
@@ -115,21 +115,21 @@ class CourseService {
     }
     findCourseById(id) {
         for (var i = 0; i < allCourses.length; i++) {
-            if (id == allCourses[i].id) {
+            if (id === allCourses[i].id) {
                 return allCourses[i];
             }
         }
     }
     updateCourse(id, course) {
         for (var i = 0; i < allCourses.length; i++) {
-            if (id == allCourses[i].id) {
+            if (id === allCourses[i].id) {
                 allCourses[i] = course;
             }
         }
     }
     deleteCourse(id) {
         for (var i = 0; i < allCourses.length; i++) {
-            if (id == allCourses[i].id) {
+            if (id === allCourses[i].id) {
                 allCourses.splice(allCourses.indexOf(allCourses[i]),1);
             }
         }
