@@ -1,15 +1,15 @@
 import React from 'react';
 import CourseTable from './CourseTable';
 import Navigation from '../components/Navigation';
-import CourseTitle from '../components/CourseTitle';
 import CourseService from "../services/CourseService";
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import CourseGrid from './CourseGrid';
 export default class CourseList extends React.Component {
 
     constructor() {
         super();
         this.state = {courses:[]}
-        this.courseService = CourseService.instance;
+        this.courseService = new CourseService();
         this.deleteCourse = this.deleteCourse.bind(this);
         this.createCourse = this.createCourse.bind(this);
     }
@@ -38,16 +38,14 @@ export default class CourseList extends React.Component {
         return (
             <div>
                 <Navigation createCourse={this.createCourse}/>
-                <CourseTitle/>
                 <Router>
                     <div>
-                        <Route path="/courses" render={()=><CourseTable courses={this.state.courses} deleteCourse={this.deleteCourse}/>}/>
-                        <Route path="/courses/courseGrid" render={()=><h1>Hello</h1>}/>
+                        <Link to="/courses/courseTable"><h1>Table</h1></Link>
+                        <Link to="/courses/courseGrid"><h1>Grid</h1></Link>
+                        <Route path="/courses/courseTable" render={() => <CourseTable courses={this.state.courses} deleteCourse={this.deleteCourse}/>}/>
+                        <Route path="/courses/courseGrid" render={() => <CourseGrid courses={this.state.courses}/>}/>
                     </div>
                 </Router>
-                <button className="btn btn_transparent float-right icon_low_right">
-                    <i className="fa fa-plus-circle fa-4x red "></i>
-                </button>
             </div>
         );
     }

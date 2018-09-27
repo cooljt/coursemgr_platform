@@ -1,11 +1,11 @@
 import React from 'react';
 import CourseRow from '../components/CourseRow';
+import CourseTitle from '../components/CourseTitle';
 export default class CourseTable extends React.Component {
 
     constructor(props) {
         super(props);
     }
-
 
     renderList() {
         var module = this.props.courses.map((course,index) => {
@@ -16,7 +16,8 @@ export default class CourseTable extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
+                <CourseTitle/>
                 <ul className="list-group">
                     {
                         this.renderList()

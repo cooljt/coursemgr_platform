@@ -34,7 +34,7 @@ body {
 	align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 300px) {
 	#status_bar {
 		display: none;
 	}
@@ -46,7 +46,26 @@ body {
 	.group-list>label {
 		display: none;
 	}
+
+	.card_width {
+		width: 100%;
+	}
 }
+
+@media screen and (max-width: 400px) {
+
+	.card_width {
+		width: 330px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	.card_width {
+		width: 160px;
+	}
+}
+
 
 .extra_padding_left {
 	padding-left: 70px;
