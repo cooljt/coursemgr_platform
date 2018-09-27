@@ -40,8 +40,6 @@ export default class CourseList extends React.Component {
                 <Navigation createCourse={this.createCourse}/>
                 <Router>
                     <div>
-                        <Link to="/courses/courseTable"><h1>Table</h1></Link>
-                        <Link to="/courses/courseGrid"><h1>Grid</h1></Link>
                         <Route path="/courses/courseTable" render={() => <CourseTable courses={this.state.courses} deleteCourse={this.deleteCourse}/>}/>
                         <Route path="/courses/courseGrid" render={() => <CourseGrid courses={this.state.courses}/>}/>
                     </div>

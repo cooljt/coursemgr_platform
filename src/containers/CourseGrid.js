@@ -1,6 +1,7 @@
 import React from 'react';
 import CourseCard from '../components/CourseCard'
-
+import CourseGridTitle from '../components/CourseGridTitle';
+import CourseTitle from "../components/CourseTitle";
 
 
 export default class CourseGrid extends React.Component {
@@ -18,9 +19,12 @@ export default class CourseGrid extends React.Component {
 
     render() {
         return (
+            <div className="container-fluid">
+                <CourseGridTitle/>
                 <div className="card-deck">
                     {this.renderList()}
                 </div>
+            </div>
         );
     }
 

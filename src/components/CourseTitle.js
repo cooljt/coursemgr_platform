@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class CourseTitle extends React.Component {
     render () {
@@ -25,12 +26,14 @@ export default class CourseTitle extends React.Component {
                     </div>
                     <div className="col-sm-1 home_vertical_center">
                         <button className="btn btn_transparent">
-                            <i className="fa fa-th-large"></i>
+                            <Link to='/courses/courseGrid'>
+                                <i className="fa fa-th-large"></i>
+                            </Link>
                         </button>
                     </div>
                     <div className="col-sm-1 home_vertical_center">
                         <button className="btn btn_transparent">
-                            <i className="fa fa-sort-alpha-up home_vertical_center"></i>
+                            <i className="fa fa-sort-alpha-asc home_vertical_center"></i>
                         </button>
                     </div>
                 </div>
