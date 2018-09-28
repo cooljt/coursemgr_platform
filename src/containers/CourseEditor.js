@@ -52,7 +52,7 @@ export default class CourseEditor extends React.Component {
 
     addModule = (module) => {
         let course = this.state.course;
-        course.push(module)
+        course.modules.push(module)
         this.setState({course:course});
     }
 
@@ -62,6 +62,33 @@ export default class CourseEditor extends React.Component {
         modules = modules.map((m) => {
             if (m === module) {
                 m.lessons.push(lesson);
+                return m;
+            }
+            else {
+                return m;
+            }
+        });
+        course.modules = modules;
+        this.setState({course:course});
+    }
+
+    addTopic = (module, lesson, topic) => {
+        let course = this.state.course;
+        let modules = course.modules;
+        let lessons = module.lessons;
+
+        lessons = lessons.map((l) => {
+           if (l === lesson) {
+               l.topics.push(topic);
+               return l
+           }
+           else {
+               return l;
+           }
+        });
+        modules = modules.map((m) => {
+            if (m === module) {
+                m.lessons = lessons;
                 return m;
             }
             else {
@@ -105,7 +132,10 @@ export default class CourseEditor extends React.Component {
                         <TopicPills
                             selectTopic={this.selectTopic}
                             selectedTopic={this.state.selectedTopic}
-                            topics={this.state.selectedLesson.topics}/>
+                            addTopic={this.addTopic}
+                            topics={this.state.selectedLesson.topics}
+                            module={this.state.selectedModule}
+                            lesson={this.state.selectedLesson}/>
                         <WidgetList/>
                     </div>
                 </div>
