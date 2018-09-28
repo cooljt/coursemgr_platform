@@ -1,6 +1,7 @@
 import React from 'react';
 import WidgetList from '../components/WidgetList';
 import ModuleList from '../components/ModuleList';
+import LessonTabs from '../components/LessonTabs';
 
 export default class CourseEditor extends React.Component {
 
@@ -50,7 +51,12 @@ export default class CourseEditor extends React.Component {
                             modules={this.state.course.modules}
                         />
                     </div>
-                    <div className="col-8"></div>
+                    <div className="col-8">
+                        <LessonTabs
+                            selectLesson={this.selectLesson}
+                            selectedLesson={this.state.selectedLesson}
+                            lessons={this.state.selectedModule.lessons}/>
+                    </div>
                 </div>
             </div>
         );
