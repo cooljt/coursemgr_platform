@@ -95,18 +95,16 @@ var allCourses = [
 class CourseService {
 
     createCourse(course) {
+        console.log(course);
         allCourses.push(course);
     }
     findAllCourse() {
         return allCourses;
     }
     findCourseById(id) {
-        for (var i = 0; i < allCourses.length; i++) {
-            if (id === allCourses[i].id) {
-                return allCourses[i];
-            }
-        }
+        return allCourses.find(course => course.id === id);
     }
+
     updateCourse(id, course) {
         for (var i = 0; i < allCourses.length; i++) {
             if (id === allCourses[i].id) {
@@ -115,11 +113,7 @@ class CourseService {
         }
     }
     deleteCourse(id) {
-        for (var i = 0; i < allCourses.length; i++) {
-            if (id === allCourses[i].id) {
-                allCourses.splice(allCourses.indexOf(allCourses[i]),1);
-            }
-        }
+        allCourses = allCourses.filter(course => course.id !== id);
     }
 }
 

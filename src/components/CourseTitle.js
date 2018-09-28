@@ -25,11 +25,11 @@ export default class CourseTitle extends React.Component {
                         <label className="small_font_size">Last modified by me</label>
                     </div>
                     <div className="col-sm-1 home_vertical_center">
-                        <button className="btn btn_transparent">
-                            <Link to='/courses/courseGrid'>
+                        <Link to='/courses/courseGrid'>
+                            <button className="btn btn_transparent">
                                 <i className="fa fa-th-large"></i>
-                            </Link>
-                        </button>
+                            </button>
+                        </Link>
                     </div>
                     <div className="col-sm-1 home_vertical_center">
                         <button className="btn btn_transparent">

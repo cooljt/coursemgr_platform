@@ -22,11 +22,11 @@ export default class CourseGridTitle extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2 home_vertical_center">
-                        <button className="btn btn_transparent">
-                            <Link to="/courses/courseTable">
+                        <Link to="/courses/courseTable">
+                            <button className="btn btn_transparent">
                                 <i className="fa fa-list-ul"></i>
-                            </Link>
-                        </button>
+                            </button>
+                        </Link>
                     </div>
                     <div className="col-sm-2 home_vertical_center">
                         <button className="btn btn_transparent">

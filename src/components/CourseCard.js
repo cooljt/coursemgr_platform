@@ -16,7 +16,7 @@ export default class CourseCard extends React.Component
                             <div className="col-3"><i className="fa fa-sticky-note"></i></div>
                             <div className="col-3"><label>me</label></div>
                             <div className="col-3"><label>6:45PM</label></div>
-                            <div className="col-3"><i className="fa fa-times"></i></div>
+                            <div className="col-3"><i onClick={() => this.props.deleteCourse(this.props.id)} className="fa fa-times"></i></div>
                         </div>
                     </div>
                 </div>

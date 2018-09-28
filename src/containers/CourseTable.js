@@ -1,6 +1,7 @@
 import React from 'react';
 import CourseRow from '../components/CourseRow';
 import CourseTitle from '../components/CourseTitle';
+import {Link} from "react-router-dom";
 export default class CourseTable extends React.Component {
 
     constructor(props) {
