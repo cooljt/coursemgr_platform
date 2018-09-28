@@ -16,6 +16,7 @@ export default class CourseEditor extends React.Component {
             course => course.id === courseId
         );
 
+        const emptyTopic = {}
         const selectedModule = course.modules[0];
         const selectedLesson = selectedModule.lessons[0];
         const selectedTopic = selectedLesson.topics[0];
@@ -42,6 +43,21 @@ export default class CourseEditor extends React.Component {
         this.setState({selectedTopic:topic});
     }
 
+    deleteModule = (module) => {
+        let modules = this.state.course.modules.filter((m) => module !== m );
+        let course = this.state.course;
+        course.modules = modules;
+        this.setState({course:course});
+        this.selectModule(this.state.course.modules[0]);
+    }
+
+    addModule = (module) => {
+        let course = this.state.course;
+        console.log(course.modules);
+        course.modules.push(module);
+        this.setState({course:course});
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -60,6 +76,8 @@ export default class CourseEditor extends React.Component {
                             selectModule={this.selectModule}
                             selectedModule={this.state.selectedModule}
                             modules={this.state.course.modules}
+                            deleteModule={this.deleteModule}
+                            addModule={this.addModule}
                         />
                     </div>
                     <div className="col-8">
