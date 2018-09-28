@@ -41,6 +41,41 @@ var allCourses = [
                 ]
             },
             {
+                "title": "Week 2",
+                "lessons": [
+                    {
+                        "title": "CSS",
+                        "topics": [
+                            {
+                                "title": "Bootstrap",
+                                "widgets": [
+                                    {
+                                        "type": "HEADING",
+                                        "size": 1,
+                                        "text": "The Document Object Model"
+                                    },
+                                    {
+                                        "type": "PARAGRAPH",
+                                        "text": "This topic introduces the DOM"
+                                    },
+                                    {
+                                        "type": "LIST",
+                                        "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
+                                    },
+                                    {
+                                        "type": "IMAGE",
+                                        "src": "https://picsum.photos/200"
+                                    },
+                                    {
+                                        "type": "LINK",
+                                        "title": "The DOM",
+                                        "href": "https://en.wikipedia.org/wiki/Document_Object_Model"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
         ]
     },
@@ -52,10 +87,42 @@ var allCourses = [
                 "title": "Week 1",
                 "lessons": [
                     {
-                        "title": "HTML",
+                        "title": "SQL",
                         "topics": [
                             {
-                                "title": "DOM",
+                                "title": "Mysql",
+                                "widgets": [
+                                    {
+                                        "type": "HEADING",
+                                        "size": 1,
+                                        "text": "The Document Object Model"
+                                    },
+                                    {
+                                        "type": "PARAGRAPH",
+                                        "text": "This topic introduces the DOM"
+                                    },
+                                    {
+                                        "type": "LIST",
+                                        "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
+                                    },
+                                    {
+                                        "type": "IMAGE",
+                                        "src": "https://picsum.photos/200"
+                                    },
+                                    {
+                                        "type": "LINK",
+                                        "title": "The DOM",
+                                        "href": "https://en.wikipedia.org/wiki/Document_Object_Model"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "SQL-2",
+                        "topics": [
+                            {
+                                "title": "Mysql-2",
                                 "widgets": [
                                     {
                                         "type": "HEADING",
@@ -86,6 +153,41 @@ var allCourses = [
                 ]
             },
             {
+                "title": "Week 2",
+                "lessons": [
+                    {
+                        "title": "DB",
+                        "topics": [
+                            {
+                                "title": "DB Service",
+                                "widgets": [
+                                    {
+                                        "type": "HEADING",
+                                        "size": 1,
+                                        "text": "The Document Object Model"
+                                    },
+                                    {
+                                        "type": "PARAGRAPH",
+                                        "text": "This topic introduces the DOM"
+                                    },
+                                    {
+                                        "type": "LIST",
+                                        "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
+                                    },
+                                    {
+                                        "type": "IMAGE",
+                                        "src": "https://picsum.photos/200"
+                                    },
+                                    {
+                                        "type": "LINK",
+                                        "title": "The DOM",
+                                        "href": "https://en.wikipedia.org/wiki/Document_Object_Model"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
         ]
     }
