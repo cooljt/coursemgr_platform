@@ -16,7 +16,6 @@ export default class CourseEditor extends React.Component {
             course => course.id === courseId
         );
 
-        const emptyTopic = {}
         const selectedModule = course.modules[0];
         const selectedLesson = selectedModule.lessons[0];
         const selectedTopic = selectedLesson.topics[0];
@@ -53,9 +52,25 @@ export default class CourseEditor extends React.Component {
 
     addModule = (module) => {
         let course = this.state.course;
-        console.log(course.modules);
-        course.modules.push(module);
+        course.push(module)
         this.setState({course:course});
+    }
+
+    addLesson = (module,lesson) => {
+        let course = this.state.course;
+        let modules = course.modules;
+        modules = modules.map((m) => {
+            if (m === module) {
+                m.lessons.push(lesson);
+                return m;
+            }
+            else {
+                return m;
+            }
+        });
+        course.modules = modules;
+        this.setState({course:course});
+
     }
 
     render() {
@@ -84,7 +99,9 @@ export default class CourseEditor extends React.Component {
                         <LessonTabs
                             selectLesson={this.selectLesson}
                             selectedLesson={this.state.selectedLesson}
-                            lessons={this.state.selectedModule.lessons}/>
+                            addLesson={this.addLesson}
+                            lessons={this.state.selectedModule.lessons}
+                            module={this.state.selectedModule}/>
                         <TopicPills
                             selectTopic={this.selectTopic}
                             selectedTopic={this.state.selectedTopic}

@@ -1,7 +1,8 @@
 import React from 'react'
 import LessonTab from "./LessonTab";
+import LessonAdd from "./LessonAdd";
 
-const LessonTabs = ({lessons, selectLesson, selectedLesson}) =>
+const LessonTabs = ({lessons, module, selectLesson, addLesson, selectedLesson}) =>
     <ul className="nav nav-tabs">
         {
             lessons.map((lesson, index) =>
@@ -12,6 +13,7 @@ const LessonTabs = ({lessons, selectLesson, selectedLesson}) =>
                                 key={index}/>
             )
         }
+        <LessonAdd module={module} addLesson={addLesson}/>
     </ul>
 
 export default LessonTabs
