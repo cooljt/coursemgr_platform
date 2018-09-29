@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ModuleListItem = ({module, selectModule, selected, deleteModule, changeModuleTitle}) =>
-    <li className={selected ? 'list-group-item active': 'list-group-item'}>
+    <li className={selected ? 'list-group-item active mt-2': 'list-group-item mt-2'}>
         <span onClick={() => selectModule(module)}>{module.title}</span>
         <i onClick={()=>deleteModule(module)} className="fa fa-times float-right"></i>
         <i onClick={()=>{

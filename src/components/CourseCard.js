@@ -8,7 +8,7 @@ export default class CourseCard extends React.Component
     }
     render() {
         return (
-                <div className="card card_width">
+                <div className="card in_block">
                     <img className="card-img-top"
                         src="https://picsum.photos/300/200"/>
                     <div className="card-body">

@@ -46,26 +46,31 @@ body {
 	.group-list>label {
 		display: none;
 	}
+}
 
-	.card_width {
-		width: 100%;
+
+@media (min-width: 576px) {
+	.card-columns {
+		column-count: 1;
 	}
 }
 
-@media screen and (max-width: 400px) {
-
-	.card_width {
-		width: 330px;
+@media (min-width: 768px) {
+	.card-columns {
+		column-count: 3;
 	}
 }
 
-@media screen and (max-width: 500px) {
 
-	.card_width {
-		width: 160px;
+@media (min-width: 992px) {
+	.card-columns {
+		column-count: 6;
 	}
 }
 
+.in_block {
+	display: inline-block;
+}
 
 .extra_padding_left {
 	padding-left: 70px;

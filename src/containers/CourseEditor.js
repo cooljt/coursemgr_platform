@@ -89,7 +89,7 @@ export default class CourseEditor extends React.Component {
 
         let chooseModule = modules.find((m) => {return m===module});
         chooseModule.lessons = lessons;
-        
+
         this.setState({course:course});
     }
 
@@ -106,17 +106,19 @@ export default class CourseEditor extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-                    <Link to="/courses/courseTable">
-                        <button className="btn btn_transparent"><i className="fa fa-times"></i></button>
-                    </Link>
-                    <p className="navbar-brand">{this.state.course.title} Course Editor</p>
-                    <button className="navbar-toggler">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                </nav>
                 <div className="row">
-                    <div className="col-4">
+                    <nav className="w-100 navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+                        <Link to="/courses/courseTable">
+                            <button className="btn btn_transparent"><i className="fa fa-times"></i></button>
+                        </Link>
+                        <p className="navbar-brand">{this.state.course.title} Course Editor</p>
+                        <button className="navbar-toggler">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                    </nav>
+                </div>
+                <div className="row">
+                    <div className="col-4 bg-dark">
                         <ModuleList
                             selectModule={this.selectModule}
                             selectedModule={this.state.selectedModule}

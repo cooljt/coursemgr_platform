@@ -21,7 +21,7 @@ export default class CourseGrid extends React.Component {
         return (
             <div className="container-fluid">
                 <CourseGridTitle/>
-                <div className="card-deck">
+                <div className="card-columns">
                     {this.renderList()}
                 </div>
             </div>

@@ -32,6 +32,8 @@ export default class CourseManager extends React.Component {
         this.findAllCourses();
     }
 
+
+
     render() {
         return (
             <Router>
