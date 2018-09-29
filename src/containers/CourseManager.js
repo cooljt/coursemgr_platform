@@ -14,7 +14,7 @@ export default class CourseManager extends React.Component {
     }
 
     findAllCourses() {
-        var courses = this.courseService.findAllCourse();
+        let courses = this.courseService.findAllCourse();
         this.setState({courses:courses});
     }
 

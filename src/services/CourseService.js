@@ -197,7 +197,6 @@ var allCourses = [
 class CourseService {
 
     createCourse(course) {
-        console.log(course);
         allCourses.push(course);
     }
     findAllCourse() {

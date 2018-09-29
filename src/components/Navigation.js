@@ -5,15 +5,20 @@ export default class Navigation extends React.Component {
     constructor(props) {
         super(props);
         this.inputChanged = this.inputChanged.bind(this);
-        this.newCourse = {};
+        this.state = {title: ""}
+
+    }
+    inputChanged(event) {
+        this.setState({title:event.target.value});
     }
 
-    inputChanged(event) {
-        this.newCourse = {
+    createNewCourse() {
+         let newCourse = {
             "id":(new Date()).getTime(),
-            "title":event.target.value,
+            "title":this.state.title,
             "modules":[]
         }
+        this.props.createCourse(newCourse);
     }
 
     render() {
@@ -32,7 +37,7 @@ export default class Navigation extends React.Component {
                             <input onChange={this.inputChanged} type="text" placeholder="New Course" className="form-control" />
                         </div>
                         <div className="col-sm-1 home_center">
-                            <button onClick={() => this.props.createCourse(this.newCourse)} className="btn btn_transparent">
+                            <button onClick={() => this.createNewCourse()} className="btn btn_transparent">
                                 <i className="fa fa-plus-circle fa-2x red"></i>
                             </button>
                         </div>

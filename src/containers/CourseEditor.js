@@ -13,12 +13,23 @@ export default class CourseEditor extends React.Component {
         const courseId = this.props.match.params.courseId;
 
         const course = this.props.courses.find(
-            course => course.id === courseId
+            course => course.id == courseId
         );
 
-        const selectedModule = course.modules[0];
-        const selectedLesson = selectedModule.lessons[0];
-        const selectedTopic = selectedLesson.topics[0];
+        let selectedModule = {title:"",lessons:[]};
+        let selectedLesson = {title:"",topics:[]};
+        let selectedTopic = {title:"",widgets:[]};
+        if (course.modules.length !== 0) {
+            selectedModule = course.modules[0];
+            if (selectedModule.lessons.length !== 0) {
+                selectedLesson = selectedModule.lessons[0];
+                if (selectedLesson.topics.length !== 0) {
+                    selectedTopic = selectedLesson.topics[0];
+                }
+            }
+        }
+
+
 
         this.state = {
             course: course,
@@ -29,13 +40,11 @@ export default class CourseEditor extends React.Component {
     }
 
     selectModule = (module) => {
-        this.setState({selectedModule:module});
-        this.selectLesson(module.lessons[0]);
+        this.setState({selectedModule:module,selectedLesson:module.lessons[0],selectedTopic:module.lessons[0].topics[0]});
     }
 
     selectLesson = (lesson) => {
-        this.setState({selectedLesson:lesson});
-        this.selectTopic(lesson.topics[0]);
+        this.setState({selectedLesson:lesson,selectedTopic:lesson.topics[0]});
     }
 
     selectTopic = (topic) => {
@@ -47,12 +56,20 @@ export default class CourseEditor extends React.Component {
         let course = this.state.course;
         course.modules = modules;
         this.setState({course:course});
-        this.selectModule(this.state.course.modules[0]);
+        if (this.state.course.modules.length !== 0) {
+            this.selectModule(this.state.course.modules[0]);
+        }
+        else {
+            this.setState({selectedModule:{title:"",lessons:[]}})
+            this.setState({selectedLesson:{title:"",topics:[]}});
+            this.setState({selectedTopic:{title:"",widgets:[]}});
+        }
+
     }
 
     addModule = (module) => {
         let course = this.state.course;
-        course.modules.push(module)
+        course.modules.push(module);
         this.setState({course:course});
     }
 
@@ -75,17 +92,18 @@ export default class CourseEditor extends React.Component {
     addTopic = (module, lesson, topic) => {
         let course = this.state.course;
         let modules = course.modules;
-        let lessons = module.lessons;
+        let lessons = this.state.selectedModule.lessons;
 
         lessons = lessons.map((l) => {
            if (l === lesson) {
                l.topics.push(topic);
-               return l
+               return l;
            }
            else {
                return l;
            }
         });
+
         modules = modules.map((m) => {
             if (m === module) {
                 m.lessons = lessons;
@@ -105,7 +123,7 @@ export default class CourseEditor extends React.Component {
             <div className="container-fluid">
                 <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                     <Link to="/courses/courseTable">
-                        <button className="btn btn_transparent"><i class="fa fa-times"></i></button>
+                        <button className="btn btn_transparent"><i className="fa fa-times"></i></button>
                     </Link>
                     <p className="navbar-brand">{this.state.course.title} Course Editor</p>
                     <button className="navbar-toggler">
