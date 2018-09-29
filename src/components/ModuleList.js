@@ -1,7 +1,7 @@
 import React from 'react';
 import ModuleListItem from "./ModuleListItem";
 import ModuleAdd from './ModuleAdd';
-const ModuleList = ({modules, selectModule, selectedModule, deleteModule, addModule}) =>
+const ModuleList = ({modules, selectModule, selectedModule, deleteModule, addModule, changeModuleTitle}) =>
     <ul className="list-group">
         <ModuleAdd addModule={addModule}/>
         {
@@ -10,6 +10,7 @@ const ModuleList = ({modules, selectModule, selectedModule, deleteModule, addMod
                 selectModule={selectModule}
                 deleteModule={deleteModule}
                 addModule={addModule}
+                changeModuleTitle={changeModuleTitle}
                 key={index}
                 module={module}/>)
         }

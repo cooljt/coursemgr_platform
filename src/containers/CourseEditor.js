@@ -29,8 +29,6 @@ export default class CourseEditor extends React.Component {
             }
         }
 
-
-
         this.state = {
             course: course,
             selectedModule: selectedModule,
@@ -76,16 +74,8 @@ export default class CourseEditor extends React.Component {
     addLesson = (module,lesson) => {
         let course = this.state.course;
         let modules = course.modules;
-        modules = modules.map((m) => {
-            if (m === module) {
-                m.lessons.push(lesson);
-                return m;
-            }
-            else {
-                return m;
-            }
-        });
-        course.modules = modules;
+        let chooseModule = modules.find((m) => {return m===module});
+        chooseModule.lessons.push(lesson);
         this.setState({course:course});
     }
 
@@ -94,29 +84,24 @@ export default class CourseEditor extends React.Component {
         let modules = course.modules;
         let lessons = this.state.selectedModule.lessons;
 
-        lessons = lessons.map((l) => {
-           if (l === lesson) {
-               l.topics.push(topic);
-               return l;
-           }
-           else {
-               return l;
-           }
-        });
+        let chooseLesson = lessons.find((l) => {return l===lesson});
+        chooseLesson.topics.push(topic);
 
-        modules = modules.map((m) => {
-            if (m === module) {
-                m.lessons = lessons;
-                return m;
-            }
-            else {
-                return m;
-            }
-        });
+        let chooseModule = modules.find((m) => {return m===module});
+        chooseModule.lessons = lessons;
+        
+        this.setState({course:course});
+    }
+
+    changeModuleTitle = (module, newTitle) => {
+        let course = this.state.course;
+        let modules = course.modules;
+        let editModule = modules.find((m) => {return m === module});
+        editModule.title = newTitle;
         course.modules = modules;
         this.setState({course:course});
-
     }
+
 
     render() {
         return (
@@ -138,6 +123,7 @@ export default class CourseEditor extends React.Component {
                             modules={this.state.course.modules}
                             deleteModule={this.deleteModule}
                             addModule={this.addModule}
+                            changeModuleTitle={this.changeModuleTitle}
                         />
                     </div>
                     <div className="col-8">

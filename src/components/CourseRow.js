@@ -15,7 +15,11 @@ export default class CourseRow extends React.Component {
                             <i className="fa fa-sticky-note"></i>
                         </Link>
                     </div>
-                    <div className="col-sm-6"><p>{this.props.title}</p></div>
+                    <div className="col-sm-6">
+                        <Link to={`/courseEditor/${this.props.id}/edit`}>
+                            <p>{this.props.title}</p>
+                        </Link>
+                    </div>
                     <div className="col-sm-2"><label>me</label></div>
                     <div className="col-sm-2"><label>6:45PM</label></div>
                     <div className="col-sm-1"><i
