@@ -5,6 +5,7 @@ const ModuleList = ({modules, selectModule, selectedModule, deleteModule, addMod
     <ul className="list-group">
         <ModuleAdd addModule={addModule}/>
         {
+
             modules.map((module, index) => <ModuleListItem
                 selected={selectedModule === module}
                 selectModule={selectModule}
