@@ -98,9 +98,26 @@ export default class CourseEditor extends React.Component {
         let modules = course.modules;
         let editModule = modules.find((m) => {return m === module});
         editModule.title = newTitle;
-        course.modules = modules;
         this.setState({course:course});
     }
+
+    changeLessonTitle = (module, lesson, newTitle) => {
+        let course = this.state.course;
+        let editModule = course.modules.find((m) => {return m === module});
+        let editLesson = editModule.lessons.find((l) => {return l === lesson});
+        editLesson.title = newTitle;
+        this.setState({course:course});
+    }
+
+    changeTopicTitle = (module, lesson, topic, newTitle) => {
+        let course = this.state.course;
+        let editModule = course.modules.find((m) => {return m === module});
+        let editLesson = editModule.lessons.find((l) => {return l === lesson});
+        let editTopic = editLesson.topics.find((t) => {return t === topic});
+        editTopic.title = newTitle;
+        this.setState({course:course});
+    }
+
 
 
     render() {
@@ -133,12 +150,14 @@ export default class CourseEditor extends React.Component {
                             selectLesson={this.selectLesson}
                             selectedLesson={this.state.selectedLesson}
                             addLesson={this.addLesson}
+                            changeLessonTitle={this.changeLessonTitle}
                             lessons={this.state.selectedModule.lessons}
                             module={this.state.selectedModule}/>
                         <TopicPills
                             selectTopic={this.selectTopic}
                             selectedTopic={this.state.selectedTopic}
                             addTopic={this.addTopic}
+                            changeTopicTitle={this.changeTopicTitle}
                             topics={this.state.selectedLesson.topics}
                             module={this.state.selectedModule}
                             lesson={this.state.selectedLesson}/>

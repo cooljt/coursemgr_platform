@@ -2,7 +2,7 @@ import React from 'react'
 import TopicPill from "./TopicPill";
 import TopicAdd from "./TopicAdd";
 
-const TopicPills = ({topics, module, lesson, addTopic, selectTopic, selectedTopic}) =>
+const TopicPills = ({topics, module, lesson, addTopic, selectTopic, changeTopicTitle, selectedTopic}) =>
     <ul className="nav nav-pills">
         {
             topics.map((topic, index) =>
@@ -10,6 +10,9 @@ const TopicPills = ({topics, module, lesson, addTopic, selectTopic, selectedTopi
                                 selected={selectedTopic === topic}
                                 selectTopic={selectTopic}
                                 topic={topic}
+                                module={module}
+                                lesson={lesson}
+                                changeTopicTitle={changeTopicTitle}
                                 key={index}/>
             )
         }
