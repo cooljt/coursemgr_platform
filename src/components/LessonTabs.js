@@ -2,7 +2,7 @@ import React from 'react'
 import LessonTab from "./LessonTab";
 import LessonAdd from "./LessonAdd";
 
-const LessonTabs = ({lessons, module, selectLesson, addLesson, selectedLesson,changeLessonTitle}) =>
+const LessonTabs = ({lessons, module, selectLesson, addLesson, deleteLesson, selectedLesson,changeLessonTitle}) =>
     <ul className="nav nav-tabs">
         {
             lessons.map((lesson, index) =>
@@ -12,6 +12,7 @@ const LessonTabs = ({lessons, module, selectLesson, addLesson, selectedLesson,ch
                                 lesson={lesson}
                                 module={module}
                                 changeLessonTitle={changeLessonTitle}
+                                deleteLesson={deleteLesson}
                                 key={index}/>
             )
         }

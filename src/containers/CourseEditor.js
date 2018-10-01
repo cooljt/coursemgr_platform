@@ -38,11 +38,13 @@ export default class CourseEditor extends React.Component {
     }
 
     selectModule = (module) => {
-        this.setState({selectedModule:module,selectedLesson:module.lessons[0],selectedTopic:module.lessons[0].topics[0]});
+        this.setState({selectedModule:module});
+        this.selectLesson(this.state.selectedModule.lessons[0]);
     }
 
     selectLesson = (lesson) => {
-        this.setState({selectedLesson:lesson,selectedTopic:lesson.topics[0]});
+        this.setState({selectedLesson:lesson});
+        this.selectTopic(this.state.selectedLesson.topics[0]);
     }
 
     selectTopic = (topic) => {
@@ -62,7 +64,21 @@ export default class CourseEditor extends React.Component {
             this.setState({selectedLesson:{title:"",topics:[]}});
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
+    }
 
+    deleteLesson = (module, lesson) => {
+        let course = this.state.course;
+        let selectModule = course.modules.find((m) => m===module);
+        selectModule.lessons = selectModule.lessons.filter((l) => lesson !== l);
+        this.setState({course:course});
+    }
+
+    deleteTopic = (module, lesson, topic) => {
+        let course = this.state.course;
+        let selectModule = course.modules.find((m) => m===module);
+        let selectLesson = selectModule.lessons.find((l) => l===lesson);
+        selectLesson.topics = selectLesson.topics.filter((t) => topic !== t);
+        this.setState({course:course});
     }
 
     addModule = (module) => {
@@ -151,6 +167,7 @@ export default class CourseEditor extends React.Component {
                             selectedLesson={this.state.selectedLesson}
                             addLesson={this.addLesson}
                             changeLessonTitle={this.changeLessonTitle}
+                            deleteLesson={this.deleteLesson}
                             lessons={this.state.selectedModule.lessons}
                             module={this.state.selectedModule}/>
                         <TopicPills
@@ -158,6 +175,7 @@ export default class CourseEditor extends React.Component {
                             selectedTopic={this.state.selectedTopic}
                             addTopic={this.addTopic}
                             changeTopicTitle={this.changeTopicTitle}
+                            deleteTopic={this.deleteTopic}
                             topics={this.state.selectedLesson.topics}
                             module={this.state.selectedModule}
                             lesson={this.state.selectedLesson}/>
