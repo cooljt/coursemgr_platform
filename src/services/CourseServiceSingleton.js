@@ -285,7 +285,7 @@ export default class CourseServiceSingleton {
          }
      }
 
-    findWidget(widgetId) {
+    static findWidget(widgetId) {
         for (let c in allCourses) {
             for (let m in allCourses[c].modules) {
                 for (let l in allCourses[c].modules[m].lessons) {
@@ -301,7 +301,7 @@ export default class CourseServiceSingleton {
         }
     }
 
-    updateWidget(widgetId, widget) {
+    static updateWidget(widgetId, widget) {
         for (let c in allCourses) {
             for (let m in allCourses[c].modules) {
                 for (let l in allCourses[c].modules[m].lessons) {
@@ -310,6 +310,22 @@ export default class CourseServiceSingleton {
                             if (allCourses[c].modules[m].lessons[l].topics[t].widgets[w].id === widgetId) {
                                 allCourses[c].modules[m].lessons[l].topics[t].widgets[w] = widget;
                                 return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    static deleteWidget(widgetId) {
+        for (let c in allCourses) {
+            for (let m in allCourses[c].modules) {
+                for (let l in allCourses[c].modules[m].lessons) {
+                    for (let t in allCourses[c].modules[m].lessons[l].topics) {
+                        for (let w in allCourses[c].modules[m].lessons[l].topics[t].widgets) {
+                            if (allCourses[c].modules[m].lessons[l].topics[t].widgets[w].id === widgetId) {
+                                allCourses[c].modules[m].lessons[l].topics[t].widgets.splice(w,1);
                             }
                         }
                     }
