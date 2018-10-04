@@ -2,19 +2,18 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import CourseList from './CourseList';
 import CourseEditor from './CourseEditor';
-import CourseService from "../services/CourseService";
+import CourseServiceSingleton from "../services/CourseServiceSingleton";
 export default class CourseManager extends React.Component {
 
     constructor() {
         super();
         this.state = {courses:[]}
-        this.courseService = new CourseService();
         this.deleteCourse = this.deleteCourse.bind(this);
         this.createCourse = this.createCourse.bind(this);
     }
 
     findAllCourses() {
-        let courses = this.courseService.findAllCourse();
+        let courses = CourseServiceSingleton.findAllCourse();
         this.setState({courses:courses});
     }
 
@@ -23,12 +22,12 @@ export default class CourseManager extends React.Component {
     }
 
     deleteCourse(id) {
-        this.courseService.deleteCourse(id);
+        CourseServiceSingleton.deleteCourse(id);
         this.findAllCourses();
     }
 
     createCourse(newCourse) {
-        this.courseService.createCourse(newCourse);
+        CourseServiceSingleton.createCourse(newCourse);
         this.findAllCourses();
     }
 
