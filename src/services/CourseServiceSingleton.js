@@ -29,7 +29,7 @@ var allCourses = [
                                     {
                                         "id":"99090",
                                         "type": "LIST",
-                                        "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
+                                        "items": "Nodes,Attributes,Tag,names,IDs,Styles,Classes"
                                     },
                                     {
                                         "id":"09923",
@@ -63,7 +63,7 @@ var allCourses = [
                                     {
                                         "id":"201010",
                                         "type": "HEADING",
-                                        "size": 1,
+                                        "size": 2,
                                         "text": "The Document Object Model"
                                     },
                                     {
@@ -153,7 +153,7 @@ var allCourses = [
                                     {
                                         "id":"123123120167482",
                                         "type": "HEADING",
-                                        "size": 1,
+                                        "size": 3,
                                         "text": "The Document Object Model"
                                     },
                                     {
@@ -198,7 +198,7 @@ var allCourses = [
                                     {
                                         "id":"123123122583922",
                                         "type": "HEADING",
-                                        "size": 1,
+                                        "size": 2,
                                         "text": "The Document Object Model"
                                     },
                                     {

@@ -1,9 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import WidgetList from '../components/WidgetList';
 import ModuleList from '../components/ModuleList';
 import LessonTabs from '../components/LessonTabs';
 import TopicPills from '../components/TopicPills';
+import WidgetReducer from '../reducers/WidgetReducer';
+import WidgetListContainer from '../containers/WidgetListContainer';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+const store = createStore(WidgetReducer);
 
 export default class CourseEditor extends React.Component {
 
@@ -39,12 +44,14 @@ export default class CourseEditor extends React.Component {
 
     selectModule = (module) => {
         this.setState({selectedModule:module});
-        this.selectLesson(this.state.selectedModule.lessons[0]);
+        this.setState({selectedLesson:module.lessons[0]});
+        this.setState({selectedTopic:module.lessons[0].topics[0]});
+
     }
 
     selectLesson = (lesson) => {
         this.setState({selectedLesson:lesson});
-        this.selectTopic(this.state.selectedLesson.topics[0]);
+        this.setState({selectedTopic:lesson.topics[0]});
     }
 
     selectTopic = (topic) => {
@@ -71,6 +78,7 @@ export default class CourseEditor extends React.Component {
         let selectModule = course.modules.find((m) => m===module);
         selectModule.lessons = selectModule.lessons.filter((l) => lesson !== l);
         this.setState({course:course});
+        this.setState({selectedLesson:module.lessons[0]});
     }
 
     deleteTopic = (module, lesson, topic) => {
@@ -79,6 +87,7 @@ export default class CourseEditor extends React.Component {
         let selectLesson = selectModule.lessons.find((l) => l===lesson);
         selectLesson.topics = selectLesson.topics.filter((t) => topic !== t);
         this.setState({course:course});
+        this.setState({selectedTop:this.state.selectedLesson.topics[0]})
     }
 
     addModule = (module) => {
@@ -179,7 +188,9 @@ export default class CourseEditor extends React.Component {
                             topics={this.state.selectedLesson.topics}
                             module={this.state.selectedModule}
                             lesson={this.state.selectedLesson}/>
-                        <WidgetList/>
+                        <Provider store={store}>
+                            <WidgetListContainer initWidgets={this.state.selectedTopic.widgets}/>
+                        </Provider>
                     </div>
                 </div>
             </div>
