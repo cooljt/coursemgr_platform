@@ -8,12 +8,16 @@ const stateToPropertyMapper = state => {
     }
 }
 
-const dispatchToPropertyMapper = dispatch => {
-    return {
+const dispatchToPropertyMapper = dispatch => ({
+    init: (widgets,topic) => dispatch({
+        type:"INIT",
+        widgets:widgets,
+        topic:topic}),
+    addWidget: (widgets) => dispatch({
+        type:"ADD_WIDGET",
+        widgets:widgets}),
+});
 
-    }
-}
-
-const WidgetListContainer = connect(stateToPropertyMapper)(WidgetList)
+const WidgetListContainer = connect(stateToPropertyMapper,dispatchToPropertyMapper)(WidgetList);
 
 export default WidgetListContainer

@@ -10,10 +10,15 @@ export default class WidgetList extends React.Component {
 
     constructor(props) {
         super(props);
+        props.init(props.initWidgets, props.topic);
+    }
+
+    componentDidUpdate() {
+        this.props.init(this.props.initWidgets, this.props.topic);
     }
 
     renderWidgets() {
-        return this.props.initWidgets.map(widget => {
+        return this.props.widgets.map(widget => {
             switch (widget.type) {
                 case "HEADING":
                     return <HeadingWidget widget={widget}/>;
@@ -26,7 +31,7 @@ export default class WidgetList extends React.Component {
                 case "LINK":
                     return <LinkWidget widget={widget}/>;
                 default:
-                    return <h1>{widget.type}</h1>;
+                    return <h1>Undefine Widget Type</h1>;
             }
         })
     }
@@ -43,7 +48,8 @@ export default class WidgetList extends React.Component {
                     </div>
                 </div>
                 {this.renderWidgets()}
-                    <button className="btn btn-danger float-right icon-low-right mt-3 mb-3">
+                    <button onClick={()=>{
+                        this.props.addWidget(this.props.widgets);}} className="btn btn-danger float-right icon-low-right mt-3 mb-3">
                         <i className="fa fa-plus"></i>
                     </button>
             </div>

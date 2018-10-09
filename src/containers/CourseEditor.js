@@ -191,7 +191,9 @@ export default class CourseEditor extends React.Component {
                             module={this.state.selectedModule}
                             lesson={this.state.selectedLesson}/>
                         <Provider store={store}>
-                            <WidgetListContainer initWidgets={this.state.selectedTopic.widgets}/>
+                            <WidgetListContainer
+                                initWidgets={this.state.selectedTopic.widgets}
+                                topic={this.state.selectedTopic}/>
                         </Provider>
                     </div>
                 </div>

@@ -262,7 +262,7 @@ export default class CourseServiceSingleton {
                 for (let l in allCourses[c].modules[m].lessons) {
                     for (let t in allCourses[c].modules[m].lessons[l].topics) {
                         if (allCourses[c].modules[m].lessons[l].topics[t].id === topicId) {
-                            allCourses[c].modules[m].lessons[l].topics[t].push(widget);
+                            allCourses[c].modules[m].lessons[l].topics[t].widgets.push(widget);
                             return;
                         }
                     }
