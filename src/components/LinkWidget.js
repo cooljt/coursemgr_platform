@@ -1,6 +1,6 @@
 import React from "react";
 
-const LinkWidget = ({widget}) =>
+const LinkWidget = ({widget,deleteWidget}) =>
     <div className="container border d-flex flex-column justify-content-around widget_height mt-2">
         <div className="row mt-3">
             <div className="col-7">
@@ -20,7 +20,7 @@ const LinkWidget = ({widget}) =>
                     <option value="image">Image</option>
                     <option value="image">Image</option>
                 </select>
-                <button className="btn btn-danger ml-2">
+                <button className="btn btn-danger ml-2" onClick={() => deleteWidget(widget)}>
                     <i className="fa fa-times"></i>
                 </button>
             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListWidget = ({widget}) =>
+const ListWidget = ({widget,deleteWidget}) =>
 
     <div className="container border d-flex flex-column justify-content-around mt-2">
         <div className="row mt-3">
@@ -21,7 +21,7 @@ const ListWidget = ({widget}) =>
                     <option value="image">Image</option>
                     <option value="link">Link</option>
                 </select>
-                <button className="btn btn-danger ml-2">
+                <button className="btn btn-danger ml-2" onClick={() => deleteWidget(widget)}>
                     <i className="fa fa-times"></i>
                 </button>
             </div>
