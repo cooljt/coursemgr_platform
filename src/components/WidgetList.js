@@ -10,7 +10,7 @@ export default class WidgetList extends React.Component {
 
     constructor(props) {
         super(props);
-        props.init(props.initWidgets, props.topic);
+        this.props.init(props.initWidgets, props.topic);
     }
 
     componentDidUpdate() {
@@ -21,7 +21,7 @@ export default class WidgetList extends React.Component {
         return this.props.widgets.map(widget => {
             switch (widget.type) {
                 case "HEADING":
-                    return <HeadingWidget widget={widget}/>;
+                    return <HeadingWidget widget={widget} deleteWidget={this.props.deleteWidget}/>;
                 case "PARAGRAPH":
                     return <ParagraphWidget widget={widget}/>;
                 case "LIST":

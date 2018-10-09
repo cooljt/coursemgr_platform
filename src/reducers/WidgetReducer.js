@@ -12,7 +12,14 @@ const addWidget = (widgets) => {
     let newWidget = defaultWidget;
     newWidget.id = id;
     widgets.push(newWidget);
-    return widgets;
+}
+
+const deleteWidget = (widgets,widget) => {
+    for (let index in widgets) {
+        if (widgets[index].id === widget.id) {
+            widgets.splice(widgets[index],1)
+        }
+    }
 }
 
 
@@ -24,8 +31,16 @@ const WidgetReducer = (state={widgets:[]}, action) => {
                 selectedTopic: action.topic
             };
         case "ADD_WIDGET":
+            addWidget(state.widgets)
             return {
-                widgets:[addWidget(action.widgets)]
+                widgets:[],
+                selectedTopic:action.topic
+            };
+        case "DELETE_WIDGET":
+            deleteWidget(state.widgets, action.widget)
+            return {
+              widgets:[],
+              selectedTopic:action.topic
             };
         default:
             return state;

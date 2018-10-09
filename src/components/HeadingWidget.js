@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeadingWdiget = ({widget}) =>
+const HeadingWdiget = ({widget, deleteWidget}) =>
 
     <div className="container border d-flex flex-column justify-content-around mt-2">
         <div className="row mt-3">
@@ -21,7 +21,7 @@ const HeadingWdiget = ({widget}) =>
                     <option value="image">Image</option>
                     <option value="link">Link</option>
                 </select>
-                <button className="btn btn-danger ml-2">
+                <button className="btn btn-danger ml-2" onClick={() => deleteWidget(widget)}>
                     <i className="fa fa-times"></i>
                 </button>
             </div>
@@ -30,7 +30,7 @@ const HeadingWdiget = ({widget}) =>
             <input type="text" className="form-control wt-auto" placeholder="Heading Text" />
         </div>
         <div className="row mt-4 pl-4 pr-4">
-            <select className="form-control" name="headingtype" id="heading">
+            <select className="form-control" name="headingtype" id="heading" >
                 <option value="h1">Heading 1</option>
                 <option value="h2">Heading 2</option>
                 <option value="h3">Heading 3</option>
