@@ -43,7 +43,7 @@ export default class WidgetList extends React.Component {
                     </div>
                 </div>
                 {this.renderWidgets()}
-                    <button className="btn btn-danger float-right icon-low-right mt-3 mb-2">
+                    <button className="btn btn-danger float-right icon-low-right mt-3 mb-3">
                         <i className="fa fa-plus"></i>
                     </button>
             </div>
