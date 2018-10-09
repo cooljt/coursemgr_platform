@@ -5,6 +5,7 @@ import ParagraphWidget from "./ParagraphWidget";
 import ListWidget from "./ListWidget";
 import ImageWidget from "./ImageWidget";
 import LinkWidget from "./LinkWidget";
+
 export default class WidgetList extends React.Component {
 
     constructor(props) {
@@ -33,7 +34,18 @@ export default class WidgetList extends React.Component {
     render() {
         return (
             <div>
+                <div className="row mt-2">
+                    <div className="col-md-9 col-sm-10"></div>
+                    <div className="col-md-3 col-sm-2 d-flex flex-row">
+                        <button className="btn btn-success">Save</button>
+                        <label className="text-justify ml-2">Preview</label>
+                        <i className="fa fa-toggle-off fa-3x ml-2"></i>
+                    </div>
+                </div>
                 {this.renderWidgets()}
+                    <button className="btn btn-danger float-right icon-low-right mt-3 mb-2">
+                        <i className="fa fa-plus"></i>
+                    </button>
             </div>
         );
     }

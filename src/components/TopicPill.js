@@ -9,7 +9,7 @@ const TopicPill = ({module, lesson, topic, selectTopic, changeTopicTitle, delete
                 <i onClick={()=>{
                     let newTitle = prompt("Input New Topic Title: ", topic.title);
                     changeTopicTitle(module, lesson, topic, newTitle);
-                }}className="fa fa-edit float-right ml-2"></i>
+                }} className="fa fa-edit float-right ml-2"></i>
                 <i onClick={()=>deleteTopic(module,lesson,topic)} className="fa fa-times float-right"></i>
             </a>
         </li>);
