@@ -5,6 +5,7 @@ import LessonTabs from '../components/LessonTabs';
 import TopicPills from '../components/TopicPills';
 import WidgetReducer from '../reducers/WidgetReducer';
 import WidgetListContainer from '../containers/WidgetListContainer';
+import CourseServiceSingleton from "../services/CourseServiceSingleton";
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
@@ -17,9 +18,10 @@ export default class CourseEditor extends React.Component {
 
         const courseId = this.props.match.params.courseId;
 
-        const course = this.props.courses.find(
+        const course = CourseServiceSingleton.findCourseById(courseId)
+        /*const course = this.props.courses.find(
             course => course.id == courseId
-        );
+        );*/
 
         let selectedModule = {title:"",lessons:[]};
         let selectedLesson = {title:"",topics:[]};
