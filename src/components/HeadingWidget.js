@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeadingWdiget = ({widget, deleteWidget}) =>
+const HeadingWdiget = ({widget, deleteWidget, moveUpWidget}) =>
 
     <div className="container border d-flex flex-column justify-content-around mt-2">
         <div className="row mt-3">
@@ -8,7 +8,7 @@ const HeadingWdiget = ({widget, deleteWidget}) =>
                 <h3 className="text-justify">Heading widget</h3>
             </div>
             <div className="col-5 d-flex justify-content-end">
-                <button className="btn btn-warning">
+                <button className="btn btn-warning" onClick={() => moveUpWidget(widget)}>
                     <i className="fa fa-arrow-up"></i>
                 </button>
                 <button className="btn btn-warning ml-2">

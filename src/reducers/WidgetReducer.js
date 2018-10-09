@@ -5,14 +5,14 @@ const defaultWidget = {
     "type": "HEADING",
     "size": 1,
     "text": "Input your Heading Text"
-}
+};
 
 const addWidget = (widgets) => {
     let id = (new Date()).getTime().toString();
     let newWidget = defaultWidget;
     newWidget.id = id;
     widgets.push(newWidget);
-}
+};
 
 const deleteWidget = (widgets,widget) => {
     for (let index in widgets) {
@@ -20,7 +20,17 @@ const deleteWidget = (widgets,widget) => {
             widgets.splice(widgets[index],1)
         }
     }
-}
+};
+
+const moveUpWidget = (widgets, widget) => {
+    for (let index in widgets) {
+        if (index != 0 && widgets[index].id === widget.id) {
+            let temp = widgets[index-1];
+            widgets[index-1] = widgets[index];
+            widgets[index] = temp;
+        }
+    }
+};
 
 
 const WidgetReducer = (state={widgets:[]}, action) => {
@@ -31,16 +41,22 @@ const WidgetReducer = (state={widgets:[]}, action) => {
                 selectedTopic: action.topic
             };
         case "ADD_WIDGET":
-            addWidget(state.widgets)
+            addWidget(state.widgets);
             return {
                 widgets:[],
                 selectedTopic:action.topic
             };
         case "DELETE_WIDGET":
-            deleteWidget(state.widgets, action.widget)
+            deleteWidget(state.widgets, action.widget);
             return {
               widgets:[],
               selectedTopic:action.topic
+            };
+        case "MOVE_UP":
+            moveUpWidget(state.widgets,action.widget);
+            return {
+                widgets:[],
+                selectedTopic:action.topic
             };
         default:
             return state;

@@ -21,15 +21,25 @@ export default class WidgetList extends React.Component {
         return this.props.widgets.map(widget => {
             switch (widget.type) {
                 case "HEADING":
-                    return <HeadingWidget widget={widget} deleteWidget={this.props.deleteWidget}/>;
+                    return <HeadingWidget widget={widget}
+                                          moveUpWidget={this.props.moveUpWidget}
+                                          deleteWidget={this.props.deleteWidget}/>;
                 case "PARAGRAPH":
-                    return <ParagraphWidget widget={widget} deleteWidget={this.props.deleteWidget}/>;
+                    return <ParagraphWidget widget={widget}
+                                            moveUpWidget={this.props.moveUpWidget}
+                                            deleteWidget={this.props.deleteWidget}/>;
                 case "LIST":
-                    return <ListWidget widget={widget} deleteWidget={this.props.deleteWidget}/>;
+                    return <ListWidget widget={widget}
+                                       moveUpWidget={this.props.moveUpWidget}
+                                       deleteWidget={this.props.deleteWidget}/>;
                 case "IMAGE":
-                    return <ImageWidget widget={widget} deleteWidget={this.props.deleteWidget}/>;
+                    return <ImageWidget widget={widget}
+                                        moveUpWidget={this.props.moveUpWidget}
+                                        deleteWidget={this.props.deleteWidget}/>;
                 case "LINK":
-                    return <LinkWidget widget={widget} deleteWidget={this.props.deleteWidget}/>;
+                    return <LinkWidget widget={widget}
+                                       moveUpWidget={this.props.moveUpWidget}
+                                       deleteWidget={this.props.deleteWidget}/>;
                 default:
                     return <h1>Undefine Widget Type</h1>;
             }
