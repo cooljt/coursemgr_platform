@@ -301,6 +301,20 @@ export default class CourseServiceSingleton {
         }
     }
 
+    static updateWiidgets(topicId, widgets) {
+        for (let c in allCourses) {
+            for (let m in allCourses[c].modules) {
+                for (let l in allCourses[c].modules[m].lessons) {
+                    for (let t in allCourses[c].modules[m].lessons[l].topics) {
+                        if ( allCourses[c].modules[m].lessons[l].topics[t].id === topicId) {
+                            allCourses[c].modules[m].lessons[l].topics[t].widgets = widgets;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     static updateWidget(widgetId, widget) {
         for (let c in allCourses) {
             for (let m in allCourses[c].modules) {

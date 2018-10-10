@@ -30,6 +30,9 @@ const dispatchToPropertyMapper = dispatch => ({
         type:"MOVE_DOWN",
         widget:widget,
         topic:topic,}),
+    saveChange: (topic) => dispatch({
+        type:"SAVE",
+        topic:topic,}),
 });
 
 const WidgetListContainer = connect(stateToPropertyMapper,dispatchToPropertyMapper)(WidgetList);

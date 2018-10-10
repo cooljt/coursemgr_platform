@@ -57,7 +57,7 @@ export default class WidgetList extends React.Component {
                 <div className="row mt-2">
                     <div className="col-md-9 col-sm-10"></div>
                     <div className="col-md-3 col-sm-2 d-flex flex-row">
-                        <button className="btn btn-success">Save</button>
+                        <button className="btn btn-success" onClick={()=>{this.props.saveChange(this.props.topic)}}>Save</button>
                         <label className="text-justify ml-2">Preview</label>
                         <i className="fa fa-toggle-off fa-3x ml-2"></i>
                     </div>

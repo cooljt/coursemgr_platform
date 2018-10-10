@@ -76,6 +76,13 @@ const WidgetReducer = (state={widgets:[]}, action) => {
                 widgets:[],
                 selectedTopic:action.topic
             };
+        case "SAVE":
+            CourseServiceSingleton.updateWiidgets(action.topic.id, state.widgets);
+            alert("Save Successfully!");
+            return {
+                widgets:[],
+                selectedTopic:action.topic
+            }
         default:
             return state;
     }
