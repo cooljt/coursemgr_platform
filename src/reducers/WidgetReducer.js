@@ -24,14 +24,26 @@ const deleteWidget = (widgets,widget) => {
 
 const moveUpWidget = (widgets, widget) => {
     for (let index in widgets) {
-        if (index != 0 && widgets[index].id === widget.id) {
+        if (index > 0 && widgets[index].id === widget.id) {
             let temp = widgets[index-1];
             widgets[index-1] = widgets[index];
             widgets[index] = temp;
+            return;
         }
     }
 };
 
+const moveDownWidget = (widgets, widget) => {
+    let end = widgets.length-1;
+    for (let index in widgets) {
+        if (index < end && widgets[index].id === widget.id) {
+            let temp = widgets[parseInt(index)+1];
+            widgets[parseInt(index)+1] = widgets[index];
+            widgets[index] = temp;
+            return;
+        }
+    }
+};
 
 const WidgetReducer = (state={widgets:[]}, action) => {
     switch (action.type) {
@@ -54,6 +66,12 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "MOVE_UP":
             moveUpWidget(state.widgets,action.widget);
+            return {
+                widgets:[],
+                selectedTopic:action.topic
+            };
+        case "MOVE_DOWN":
+            moveDownWidget(state.widgets,action.widget);
             return {
                 widgets:[],
                 selectedTopic:action.topic

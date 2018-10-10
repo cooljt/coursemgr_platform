@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeadingWdiget = ({widget, deleteWidget, moveUpWidget}) =>
+const HeadingWdiget = ({widget, deleteWidget, moveUpWidget, moveDownWidget}) =>
 
     <div className="container border d-flex flex-column justify-content-around mt-2">
         <div className="row mt-3">
@@ -11,7 +11,7 @@ const HeadingWdiget = ({widget, deleteWidget, moveUpWidget}) =>
                 <button className="btn btn-warning" onClick={() => moveUpWidget(widget)}>
                     <i className="fa fa-arrow-up"></i>
                 </button>
-                <button className="btn btn-warning ml-2">
+                <button className="btn btn-warning ml-2" onClick={() => moveDownWidget(widget)}>
                     <i className="fa fa-arrow-down"></i>
                 </button>
                 <select className="form-control w-auto ml-2" name="headingtype" id="heading">

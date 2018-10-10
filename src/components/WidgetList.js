@@ -22,22 +22,27 @@ export default class WidgetList extends React.Component {
             switch (widget.type) {
                 case "HEADING":
                     return <HeadingWidget widget={widget}
+                                          moveDownWidget={this.props.moveDownWidget}
                                           moveUpWidget={this.props.moveUpWidget}
                                           deleteWidget={this.props.deleteWidget}/>;
                 case "PARAGRAPH":
                     return <ParagraphWidget widget={widget}
+                                            moveDownWidget={this.props.moveDownWidget}
                                             moveUpWidget={this.props.moveUpWidget}
                                             deleteWidget={this.props.deleteWidget}/>;
                 case "LIST":
                     return <ListWidget widget={widget}
+                                       moveDownWidget={this.props.moveDownWidget}
                                        moveUpWidget={this.props.moveUpWidget}
                                        deleteWidget={this.props.deleteWidget}/>;
                 case "IMAGE":
                     return <ImageWidget widget={widget}
+                                        moveDownWidget={this.props.moveDownWidget}
                                         moveUpWidget={this.props.moveUpWidget}
                                         deleteWidget={this.props.deleteWidget}/>;
                 case "LINK":
                     return <LinkWidget widget={widget}
+                                       moveDownWidget={this.props.moveDownWidget}
                                        moveUpWidget={this.props.moveUpWidget}
                                        deleteWidget={this.props.deleteWidget}/>;
                 default:

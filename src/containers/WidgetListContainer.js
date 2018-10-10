@@ -25,7 +25,11 @@ const dispatchToPropertyMapper = dispatch => ({
     moveUpWidget: (widget, topic) => dispatch({
         type:"MOVE_UP",
         widget:widget,
-        topic:topic,})
+        topic:topic,}),
+    moveDownWidget:(widget,topic) => dispatch({
+        type:"MOVE_DOWN",
+        widget:widget,
+        topic:topic,}),
 });
 
 const WidgetListContainer = connect(stateToPropertyMapper,dispatchToPropertyMapper)(WidgetList);
