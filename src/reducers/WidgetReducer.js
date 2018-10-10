@@ -50,38 +50,49 @@ const WidgetReducer = (state={widgets:[]}, action) => {
         case "INIT":
             return {
                 widgets: action.widgets,
-                selectedTopic: action.topic
+                selectedTopic: action.topic,
+                preview:action.preview
             };
         case "ADD_WIDGET":
             addWidget(state.widgets);
             return {
                 widgets:[],
-                selectedTopic:action.topic
+                selectedTopic:action.topic,
+                preview:action.preview
             };
         case "DELETE_WIDGET":
             deleteWidget(state.widgets, action.widget);
             return {
               widgets:[],
-              selectedTopic:action.topic
+              selectedTopic:action.topic,
+              preview:action.preview
             };
         case "MOVE_UP":
             moveUpWidget(state.widgets,action.widget);
             return {
                 widgets:[],
-                selectedTopic:action.topic
+                selectedTopic:action.topic,
+                preview:action.preview
             };
         case "MOVE_DOWN":
             moveDownWidget(state.widgets,action.widget);
             return {
                 widgets:[],
-                selectedTopic:action.topic
+                selectedTopic:action.topic,
+                preview:action.preview
             };
         case "SAVE":
             CourseServiceSingleton.updateWiidgets(action.topic.id, state.widgets);
             alert("Save Successfully!");
             return {
                 widgets:[],
-                selectedTopic:action.topic
+                selectedTopic:action.topic,
+                preview:action.preview,
+            };
+        case "CHANGE_PREVIEW":
+            return {
+                preview:action.preview === 1?0:1,
+                widgets:[]
             }
         default:
             return state;

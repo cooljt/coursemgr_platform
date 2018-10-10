@@ -5,34 +5,44 @@ import WidgetList from '../components/WidgetList'
 const stateToPropertyMapper = state => {
     return {
         widgets:state.widgets,
-        selectedTopic:state.selectedTopic
+        selectedTopic:state.selectedTopic,
+        preview:state.preview
     }
 }
 
 const dispatchToPropertyMapper = dispatch => ({
-    init: (widgets,topic) => dispatch({
+    init: (widgets,topic,preview) => dispatch({
         type:"INIT",
         widgets:widgets,
-        topic:topic}),
-    addWidget: (widgets,topic) => dispatch({
+        topic:topic,
+        preview:preview}),
+    addWidget: (widgets,topic,preview) => dispatch({
         type:"ADD_WIDGET",
         widgets:widgets,
-        topic:topic}),
-    deleteWidget: (widget,topic) => dispatch({
+        topic:topic,
+        preview:preview}),
+    deleteWidget: (widget,topic,preview) => dispatch({
         type:"DELETE_WIDGET",
         widget:widget,
-         topic:topic}),
-    moveUpWidget: (widget, topic) => dispatch({
+        topic:topic,
+        preview:preview}),
+    moveUpWidget: (widget,topic,preview) => dispatch({
         type:"MOVE_UP",
         widget:widget,
-        topic:topic,}),
-    moveDownWidget:(widget,topic) => dispatch({
+        topic:topic,
+        preview:preview}),
+    moveDownWidget:(widget,topic,preview) => dispatch({
         type:"MOVE_DOWN",
         widget:widget,
-        topic:topic,}),
-    saveChange: (topic) => dispatch({
+        topic:topic,
+        preview:preview}),
+    saveChange: (topic,preview) => dispatch({
         type:"SAVE",
-        topic:topic,}),
+        topic:topic,
+        preview:preview}),
+    changePreview:(preview) => dispatch({
+        type:"CHANGE_PREVIEW",
+        preview:preview,})
 });
 
 const WidgetListContainer = connect(stateToPropertyMapper,dispatchToPropertyMapper)(WidgetList);
