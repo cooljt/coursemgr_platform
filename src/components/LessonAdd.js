@@ -4,7 +4,7 @@ import React from 'react';
 class LessonAdd extends React.Component {
     constructor(props){
         super(props);
-        this.state = {title:""}
+        this.state = {title:"New Lesson"}
     }
 
 
@@ -14,6 +14,7 @@ class LessonAdd extends React.Component {
 
     clear = () => {
         document.getElementById("lessonInput").value = "";
+        this.setState({title:"New Lesson"});
     }
 
     createNewLesson() {

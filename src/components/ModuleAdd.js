@@ -20,6 +20,7 @@ class ModuleAdd extends React.Component {
 
     clear = () => {
         document.getElementById("moduleInput").value = "";
+        this.setState({title:"New Module"});
     }
 
     render() {

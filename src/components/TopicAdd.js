@@ -19,6 +19,7 @@ class TopicAdd extends React.Component {
 
     clear = () => {
         document.getElementById("topicInput").value = "";
+        this.setState({title:"New Topic"});
     }
     render() {
         return (
