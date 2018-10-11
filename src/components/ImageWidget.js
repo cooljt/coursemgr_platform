@@ -2,7 +2,7 @@ import React from "react";
 
 let newURL = "";
 
-const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onURLChange,preview,topic}) =>
+const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onURLChange,changeWidgetType,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
             <div>
@@ -17,7 +17,10 @@ const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onURLChan
                         <button className="btn btn-warning ml-2" onClick={() => moveDownWidget(widget,topic,preview)}>
                             <i className="fa fa-arrow-down"></i>
                         </button>
-                        <select className="form-control w-auto ml-2" name="imagetype" id="image">
+                        <select className="form-control w-auto ml-2"
+                                name="imagetype"
+                                onChange={(event)=>changeWidgetType(widget,topic,preview,event.currentTarget.value)}
+                                id="image">
                             <option value="image">Image</option>
                             <option value="heading">Heading</option>
                             <option value="list">List</option>

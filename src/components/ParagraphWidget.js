@@ -2,7 +2,7 @@ import React from "react"
 
 let newText = "";
 
-const  ParagraphWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,preview,topic}) =>
+const  ParagraphWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,changeWidgetType,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
             <div>
@@ -17,7 +17,10 @@ const  ParagraphWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTex
                         <button className="btn btn-warning ml-2" onClick={() => moveDownWidget(widget,topic,preview)}>
                             <i className="fa fa-arrow-down"></i>
                         </button>
-                        <select className="form-control w-auto ml-2" name="paragraphtype" id="paragraph">
+                        <select className="form-control w-auto ml-2"
+                                name="paragraphtype"
+                                onChange={(event)=>changeWidgetType(widget,topic,preview,event.currentTarget.value)}
+                                id="paragraph">
                             <option value="paragraph">Paragraph</option>
                             <option value="heading">Heading</option>
                             <option value="list">List</option>

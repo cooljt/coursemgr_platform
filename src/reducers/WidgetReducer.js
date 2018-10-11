@@ -1,15 +1,39 @@
 import CourseServiceSingleton from "../services/CourseServiceSingleton"
 
 const defaultWidget = {
-    "id":"777",
-    "type": "HEADING",
-    "size": 1,
-    "text": "Input your Heading Text"
+    "heading":{
+        "id":"1",
+        "type": "HEADING",
+        "size": 1,
+        "text": "Input your Heading Text"
+    },
+    "paragraph":{
+        "id":"2",
+        "type": "PARAGRAPH",
+        "text": "Input your Paragraph Text"
+    },
+    "list":{
+        "id":"3",
+        "type": "LIST",
+        "orderType":"unorder",
+        "items": "Nodes"
+    },
+    "image":{
+        "id":"4",
+        "type": "IMAGE",
+        "src": "https://picsum.photos/200"
+    },
+    "link":{
+        "id":"5",
+        "type": "LINK",
+        "title": "Google",
+        "href": "https://www.google.com"
+    }
 };
 
 const addWidget = (widgets) => {
     let id = (new Date()).getTime().toString();
-    let newWidget = defaultWidget;
+    let newWidget = defaultWidget["heading"];
     newWidget.id = id;
     widgets.push(newWidget);
 };
@@ -100,6 +124,16 @@ const updateOrderType = (widgets,widget,order) => {
     }
 };
 
+const changeWidgetType = (widgets,widget,type) => {
+    for (let index in widgets) {
+        if (widgets[index].id === widget.id) {
+            widgets[index] = defaultWidget[type];
+            widgets[index].id = widget.id;
+            return;
+        }
+    }
+};
+
 const WidgetReducer = (state={widgets:[]}, action) => {
     switch (action.type) {
         case "INIT":
@@ -172,6 +206,13 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "ORDER_TYPE_CHANGE":
             updateOrderType(state.widgets,action.widget,action.order);
+            return {
+                widgets:[],
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
+        case "CHANGE_WIDGET_TYPE":
+            changeWidgetType(state.widgets,action.widget,action.widgetType);
             return {
                 widgets:[],
                 selectedTopic:action.topic,

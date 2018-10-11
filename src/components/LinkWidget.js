@@ -3,7 +3,7 @@ import React from "react";
 let newText = "";
 let newURL = "";
 
-const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onTextChange,onURLChange, preview,topic}) =>
+const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onTextChange,onURLChange,changeWidgetType,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around widget_height mt-2">
         {preview === 0 &&
             <div>
@@ -18,7 +18,10 @@ const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onTextChan
                         <button className="btn btn-warning ml-2" onClick={() => moveDownWidget(widget,topic,preview)}>
                             <i className="fa fa-arrow-down"></i>
                         </button>
-                        <select className="form-control w-auto ml-2" name="linktype" id="link">
+                        <select className="form-control w-auto ml-2"
+                                name="linktype"
+                                onChange={(event)=>changeWidgetType(widget,topic,preview,event.currentTarget.value)}
+                                id="link">
                             <option value="link">Link</option>
                             <option value="heading">Heading</option>
                             <option value="list">List</option>

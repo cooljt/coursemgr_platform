@@ -24,6 +24,7 @@ export default class WidgetList extends React.Component {
                     return <HeadingWidget widget={widget}
                                           preview={this.props.preview}
                                           topic={this.props.selectedTopic}
+                                          changeWidgetType={this.props.changeWidgetType}
                                           onTextChange={this.props.onTextChange}
                                           headingSizeChange={this.props.headingSizeChange}
                                           moveDownWidget={this.props.moveDownWidget}
@@ -33,6 +34,7 @@ export default class WidgetList extends React.Component {
                     return <ParagraphWidget widget={widget}
                                             preview={this.props.preview}
                                             topic={this.props.selectedTopic}
+                                            changeWidgetType={this.props.changeWidgetType}
                                             onTextChange={this.props.onTextChange}
                                             moveDownWidget={this.props.moveDownWidget}
                                             moveUpWidget={this.props.moveUpWidget}
@@ -41,6 +43,7 @@ export default class WidgetList extends React.Component {
                     return <ListWidget widget={widget}
                                        preview={this.props.preview}
                                        topic={this.props.selectedTopic}
+                                       changeWidgetType={this.props.changeWidgetType}
                                        onTextChange={this.props.onTextChange}
                                        orderTypeChange={this.props.orderTypeChange}
                                        moveDownWidget={this.props.moveDownWidget}
@@ -50,6 +53,7 @@ export default class WidgetList extends React.Component {
                     return <ImageWidget widget={widget}
                                         preview={this.props.preview}
                                         topic={this.props.selectedTopic}
+                                        changeWidgetType={this.props.changeWidgetType}
                                         onURLChange={this.props.onURLChange}
                                         moveDownWidget={this.props.moveDownWidget}
                                         moveUpWidget={this.props.moveUpWidget}
@@ -58,6 +62,7 @@ export default class WidgetList extends React.Component {
                     return <LinkWidget widget={widget}
                                        preview={this.props.preview}
                                        topic={this.props.selectedTopic}
+                                       changeWidgetType={this.props.changeWidgetType}
                                        onURLChange={this.props.onURLChange}
                                        onTextChange={this.props.onTextChange}
                                        moveDownWidget={this.props.moveDownWidget}
@@ -82,10 +87,10 @@ export default class WidgetList extends React.Component {
                     </div>
                 </div>
                 {this.renderWidgets()}
-                    <button onClick={()=>{
+                <button onClick={()=>{
                         this.props.addWidget(this.props.widgets,this.props.topic,this.props.preview);}} className="btn btn-danger float-right icon-low-right mt-3 mb-3">
                         <i className="fa fa-plus-circle"></i>
-                    </button>
+                </button>
             </div>
         );
     }

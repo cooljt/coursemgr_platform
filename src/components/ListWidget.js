@@ -2,7 +2,7 @@ import React from "react";
 
 let newText = "";
 
-const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,orderTypeChange,preview,topic}) =>
+const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,orderTypeChange,changeWidgetType,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
             <div>
@@ -17,7 +17,10 @@ const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChang
                         <button className="btn btn-warning ml-2" onClick={() => moveDownWidget(widget,topic,preview)}>
                             <i className="fa fa-arrow-down"></i>
                         </button>
-                        <select className="form-control w-auto ml-2" name="listtype" id="list">
+                        <select className="form-control w-auto ml-2"
+                                name="listtype"
+                                onChange={(event)=>changeWidgetType(widget,topic,preview,event.currentTarget.value)}
+                                id="list">
                             <option value="list">List</option>
                             <option value="paragraph">Paragraph</option>
                             <option value="heading">Heading</option>
