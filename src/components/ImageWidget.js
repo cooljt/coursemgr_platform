@@ -1,6 +1,8 @@
 import React from "react";
 
-const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,preview,topic}) =>
+let newURL = "";
+
+const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onURLChange,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
             <div>
@@ -28,7 +30,11 @@ const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,preview,t
                     </div>
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
-                    <input type="link" className="form-control" placeholder="http://lorempixel.com/300/150/" />
+                    <input type="link"
+                           className="form-control"
+                           onBlur={()=>onURLChange(widget,topic,preview,newURL)}
+                           onChange={(event)=> newURL = event.target.value}
+                           placeholder="Input Your Image URL Here" />
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
                     <input type="text" className="form-control" placeholder="Widget name" />
@@ -37,7 +43,7 @@ const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,preview,t
         }
         <div className="row d-flex flex-column pl-4 pr-4 mt-4">
             {preview === 0 && <h3>Preview</h3>}
-            <img src={widget.src} alt="" />
+            <img src={widget.src} width="50%" height="50%" alt="" />
         </div>
     </div>;
 

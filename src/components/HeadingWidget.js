@@ -1,6 +1,8 @@
 import React from "react";
 
-const HeadingWdiget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,preview,topic}) =>
+let newText = "";
+
+const HeadingWdiget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
         <div>
@@ -28,7 +30,11 @@ const HeadingWdiget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,preview,
                 </div>
             </div>
             <div className="row mt-2 pl-4 pr-4">
-                <input type="text" className="form-control wt-auto" placeholder="Heading Text" />
+                <input type="text"
+                       className="form-control wt-auto"
+                       placeholder="Heading Text"
+                       onBlur={()=>onTextChange(widget,topic,preview,newText)}
+                       onChange={(event)=> newText = event.target.value}/>
             </div>
             <div className="row mt-4 pl-4 pr-4">
                 <select className="form-control" name="headingtype" id="heading" >

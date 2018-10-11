@@ -42,7 +42,19 @@ const dispatchToPropertyMapper = dispatch => ({
         preview:preview}),
     changePreview:(preview) => dispatch({
         type:"CHANGE_PREVIEW",
-        preview:preview,})
+        preview:preview,}),
+    onTextChange:(widget,topic,preview,text) => dispatch({
+        type:"TEXT_CHANGE",
+        widget:widget,
+        topic:topic,
+        preview:preview,
+        text:text,}),
+    onURLChange:(widget,topic,preview,url) => dispatch({
+        type:"URL_CHANGE",
+        widget:widget,
+        topic:topic,
+        preview:preview,
+        url:url,}),
 });
 
 const WidgetListContainer = connect(stateToPropertyMapper,dispatchToPropertyMapper)(WidgetList);

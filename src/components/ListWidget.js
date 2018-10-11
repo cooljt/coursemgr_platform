@@ -1,6 +1,8 @@
 import React from "react";
 
-const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,preview,topic}) =>
+let newText = "";
+
+const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
             <div>
@@ -28,8 +30,15 @@ const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,preview,top
                     </div>
                 </div>
                 <div className="row pl-4 pr-4 mt-2">
-            <textarea name="paragraph_input" id="paragraph_input" cols="30" rows="5" className="form-control">
-                Separate each item use ","
+            <textarea name="paragraph_input"
+                      id="paragraph_input"
+                      cols="30"
+                      rows="5"
+                      placeholder="Separate each item use ','"
+                      onBlur={()=>onTextChange(widget,topic,preview,newText)}
+                      onChange={(event)=> newText = event.target.value}
+                      className="form-control">
+                {widget.items}
             </textarea>
                 </div>
                 <div className="row pl-4 pr-4 mt-4">

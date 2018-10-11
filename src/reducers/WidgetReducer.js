@@ -45,6 +45,43 @@ const moveDownWidget = (widgets, widget) => {
     }
 };
 
+const updateWidgetText = (widgets, widget, text) => {
+  for (let index in widgets) {
+      if (widgets[index].id === widget.id) {
+          if (widgets[index].hasOwnProperty("text")) {
+              widgets[index].text = text;
+          }
+          else if (widgets[index].hasOwnProperty("items")) {
+              widgets[index].items = text;
+          }
+          else if (widgets[index].hasOwnProperty("title")){
+              widgets[index].title = text;
+          }
+          else {
+
+          }
+          return;
+      }
+  }
+};
+
+const updateWidgetURL = (widgets, widget, url) => {
+  for (let index in widgets) {
+      if (widgets[index].id === widget.id) {
+          if (widgets[index].hasOwnProperty("src")) {
+              widgets[index].src = url;
+          }
+          else if (widgets[index].hasOwnProperty("href")) {
+              widgets[index].href = url;
+          }
+          else {
+
+          }
+          return;
+      }
+  }
+};
+
 const WidgetReducer = (state={widgets:[]}, action) => {
     switch (action.type) {
         case "INIT":
@@ -93,7 +130,21 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             return {
                 preview:action.preview === 1?0:1,
                 widgets:[]
-            }
+            };
+        case "TEXT_CHANGE":
+            updateWidgetText(state.widgets, action.widget, action.text);
+            return {
+                widgets:[],
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
+        case "URL_CHANGE":
+            updateWidgetURL(state.widgets,action.widget, action.url);
+            return {
+                widgets:[],
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
         default:
             return state;
     }

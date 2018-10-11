@@ -1,6 +1,8 @@
 import React from "react"
 
-const  ParagraphWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,preview,topic}) =>
+let newText = "";
+
+const  ParagraphWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
             <div>
@@ -28,7 +30,13 @@ const  ParagraphWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,previ
                     </div>
                 </div>
                 <div className="row mt-2 pl-4 pr-4">
-                    <textarea name="paragraph_input" id="paragraph_input" cols="30" rows="3" className="form-control">{widget.text}</textarea>
+                    <textarea name="paragraph_input"
+                              id="paragraph_input"
+                              cols="30"
+                              rows="3"
+                              onBlur={()=>{console.log(newText);onTextChange(widget,topic,preview,newText)}}
+                              onChange={(event)=> newText = event.target.value}
+                              className="form-control">{widget.text}</textarea>
                 </div>
                 <div className="row mt-4 pl-4 pr-4">
                     <input type="text" className="form-control" placeholder="Widget name" />

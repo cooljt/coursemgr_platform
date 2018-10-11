@@ -1,6 +1,9 @@
 import React from "react";
 
-const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget, preview,topic}) =>
+let newText = "";
+let newURL = "";
+
+const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onTextChange,onURLChange, preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around widget_height mt-2">
         {preview === 0 &&
             <div>
@@ -28,10 +31,18 @@ const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget, preview,t
                     </div>
                 </div>
                 <div className="row pl-4 pr-4 mt-2">
-                    <input type="text" className="form-control" placeholder={widget.href} />
+                    <input type="text"
+                           className="form-control"
+                           onBlur={()=>onTextChange(widget,topic,preview,newText)}
+                           onChange={(event)=> newText = event.target.value}
+                           placeholder="Input your Link Title" />
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
-                    <input type="text" className="form-control" placeholder={widget.title} />
+                    <input type="text"
+                           className="form-control"
+                           onBlur={()=>onURLChange(widget,topic,preview,newURL)}
+                           onChange={(event)=> newURL = event.target.value}
+                           placeholder="Input Your Link URL Here" />
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
                     <input type="text" className="form-control" placeholder="Widget name" />
