@@ -37,7 +37,7 @@ const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChang
                       id="paragraph_input"
                       cols="30"
                       rows="5"
-                      placeholder="Separate each item use ','"
+                      placeholder="Enter your items and separate each item using ','"
                       onBlur={()=>onTextChange(widget,topic,preview,newText)}
                       onChange={(event)=> newText = event.target.value}
                       className="form-control">

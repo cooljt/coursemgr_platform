@@ -37,7 +37,7 @@ const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onURLChan
                            className="form-control"
                            onBlur={()=>onURLChange(widget,topic,preview,newURL)}
                            onChange={(event)=> newURL = event.target.value}
-                           placeholder="Input Your Image URL Here" />
+                           placeholder="Image URL" />
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
                     <input type="text" className="form-control" placeholder="Widget name" />

@@ -39,6 +39,7 @@ const  ParagraphWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTex
                               rows="3"
                               onBlur={()=>{console.log(newText);onTextChange(widget,topic,preview,newText)}}
                               onChange={(event)=> newText = event.target.value}
+                              placeholder="Paragraph text"
                               className="form-control">{widget.text}</textarea>
                 </div>
                 <div className="row mt-4 pl-4 pr-4">

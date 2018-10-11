@@ -38,14 +38,14 @@ const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onTextChan
                            className="form-control"
                            onBlur={()=>onTextChange(widget,topic,preview,newText)}
                            onChange={(event)=> newText = event.target.value}
-                           placeholder="Input your Link Title" />
+                           placeholder="Link Text" />
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
                     <input type="text"
                            className="form-control"
                            onBlur={()=>onURLChange(widget,topic,preview,newURL)}
                            onChange={(event)=> newURL = event.target.value}
-                           placeholder="Input Your Link URL Here" />
+                           placeholder="Link URL" />
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
                     <input type="text" className="form-control" placeholder="Widget name" />
