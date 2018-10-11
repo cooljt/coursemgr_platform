@@ -2,7 +2,7 @@ import React from "react";
 
 let newText = "";
 
-const HeadingWdiget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,preview,topic}) =>
+const HeadingWdiget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,headingSizeChange,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
         <div>
@@ -37,11 +37,30 @@ const HeadingWdiget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextCh
                        onChange={(event)=> newText = event.target.value}/>
             </div>
             <div className="row mt-4 pl-4 pr-4">
-                <select className="form-control" name="headingtype" id="heading" >
-                    <option value="h1">Heading 1</option>
-                    <option value="h2">Heading 2</option>
-                    <option value="h3">Heading 3</option>
-                </select>
+                {widget.size === 1 &&
+                 <select className="form-control"
+                         onChange={(event)=>headingSizeChange(widget,topic,preview,event.currentTarget.value)}>
+                     <option value="1">Heading 1</option>
+                     <option value="2">Heading 2</option>
+                     <option value="3">Heading 3</option>
+                 </select>
+                }
+                {widget.size === 2 &&
+                 <select className="form-control"
+                         onChange={(event)=>headingSizeChange(widget,topic,preview,event.currentTarget.value)}>
+                     <option value="2">Heading 2</option>
+                     <option value="1">Heading 1</option>
+                     <option value="3">Heading 3</option>
+                 </select>
+                }
+                {widget.size === 3 &&
+                 <select className="form-control"
+                         onChange={(event)=>headingSizeChange(widget,topic,preview,event.currentTarget.value)}>
+                     <option value="3">Heading 3</option>
+                     <option value="1">Heading 1</option>
+                     <option value="2">Heading 2</option>
+                 </select>
+                }
             </div>
             <div className="row mt-4 pl-4 pr-4">
                 <input type="text" className="form-control" placeholder="Widget name" />

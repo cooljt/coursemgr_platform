@@ -25,6 +25,7 @@ export default class WidgetList extends React.Component {
                                           preview={this.props.preview}
                                           topic={this.props.selectedTopic}
                                           onTextChange={this.props.onTextChange}
+                                          headingSizeChange={this.props.headingSizeChange}
                                           moveDownWidget={this.props.moveDownWidget}
                                           moveUpWidget={this.props.moveUpWidget}
                                           deleteWidget={this.props.deleteWidget}/>;

@@ -55,6 +55,12 @@ const dispatchToPropertyMapper = dispatch => ({
         topic:topic,
         preview:preview,
         url:url,}),
+    headingSizeChange:(widget,topic,preview,size) => dispatch({
+        type:"SIZE_CHANGE",
+        widget:widget,
+        topic:topic,
+        preview:preview,
+        size:size,}),
 });
 
 const WidgetListContainer = connect(stateToPropertyMapper,dispatchToPropertyMapper)(WidgetList);

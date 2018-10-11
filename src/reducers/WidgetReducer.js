@@ -82,6 +82,15 @@ const updateWidgetURL = (widgets, widget, url) => {
   }
 };
 
+const updateHeadingSize = (widgets,widget,size) => {
+  for (let index in widgets) {
+      if (widgets[index].id === widget.id) {
+          widgets[index].size = parseInt(size);
+          return;
+      }
+  }
+};
+
 const WidgetReducer = (state={widgets:[]}, action) => {
     switch (action.type) {
         case "INIT":
@@ -140,6 +149,13 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "URL_CHANGE":
             updateWidgetURL(state.widgets,action.widget, action.url);
+            return {
+                widgets:[],
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
+        case "SIZE_CHANGE":
+            updateHeadingSize(state.widgets,action.widget,action.size);
             return {
                 widgets:[],
                 selectedTopic:action.topic,
