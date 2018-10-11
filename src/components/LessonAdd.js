@@ -25,7 +25,7 @@ class LessonAdd extends React.Component {
 
     render() {
         return (
-            <div className="d-flex flex-row ml-2 mt-2 mb-2">
+            <div className="d-flex flex-row mr-2 mt-2 mb-2">
                 <input id="lessonInput" className="form-control mr-2" type="text" onChange={this.onChange} placeholder="New Lesson"/>
                 <button onClick={()=>this.createNewLesson()} className='btn btn-warning'>
                     <i  className="fa fa-plus float-right"></i>

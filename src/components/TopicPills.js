@@ -4,6 +4,7 @@ import TopicAdd from "./TopicAdd";
 
 const TopicPills = ({topics, module, lesson, addTopic, selectTopic, changeTopicTitle, deleteTopic, selectedTopic}) =>
     <ul className="nav nav-pills">
+        <TopicAdd addTopic={addTopic} module={module} lesson={lesson}/>
         {
             topics.map((topic, index) =>
                             <TopicPill
@@ -17,7 +18,6 @@ const TopicPills = ({topics, module, lesson, addTopic, selectTopic, changeTopicT
                                 key={index}/>
             )
         }
-        <TopicAdd addTopic={addTopic} module={module} lesson={lesson}/>
     </ul>
 
 export default TopicPills
