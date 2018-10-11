@@ -91,6 +91,15 @@ const updateHeadingSize = (widgets,widget,size) => {
   }
 };
 
+const updateOrderType = (widgets,widget,order) => {
+    for (let index in widgets) {
+        if (widgets[index].id === widget.id) {
+            widgets[index].orderType = order;
+            return;
+        }
+    }
+};
+
 const WidgetReducer = (state={widgets:[]}, action) => {
     switch (action.type) {
         case "INIT":
@@ -156,6 +165,13 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "SIZE_CHANGE":
             updateHeadingSize(state.widgets,action.widget,action.size);
+            return {
+                widgets:[],
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
+        case "ORDER_TYPE_CHANGE":
+            updateOrderType(state.widgets,action.widget,action.order);
             return {
                 widgets:[],
                 selectedTopic:action.topic,

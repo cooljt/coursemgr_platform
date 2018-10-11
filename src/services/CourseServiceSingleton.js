@@ -29,6 +29,7 @@ var allCourses = [
                                     {
                                         "id":"99090",
                                         "type": "LIST",
+                                        "orderType":"unorder",
                                         "items": "Nodes,Attributes,Tag,names,IDs,Styles,Classes"
                                     },
                                     {
@@ -74,6 +75,7 @@ var allCourses = [
                                     {
                                         "id":"93923",
                                         "type": "LIST",
+                                        "orderType":"unorder",
                                         "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
                                     },
                                     {
@@ -125,6 +127,7 @@ var allCourses = [
                                     {
                                         "id":"1231231221146",
                                         "type": "LIST",
+                                        "orderType":"unorder",
                                         "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
                                     },
                                     {
@@ -164,6 +167,7 @@ var allCourses = [
                                     {
                                         "id":"123123122123764",
                                         "type": "LIST",
+                                        "orderType":"unorder",
                                         "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
                                     },
                                     {
@@ -209,6 +213,7 @@ var allCourses = [
                                     {
                                         "id":"1231231282828282",
                                         "type": "LIST",
+                                        "orderType":"unorder",
                                         "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
                                     },
                                     {

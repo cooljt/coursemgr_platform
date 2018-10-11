@@ -61,6 +61,12 @@ const dispatchToPropertyMapper = dispatch => ({
         topic:topic,
         preview:preview,
         size:size,}),
+    orderTypeChange:(widget,topic,preview,order) => dispatch({
+        type:"ORDER_TYPE_CHANGE",
+        widget:widget,
+        topic:topic,
+        preview:preview,
+        order:order,}),
 });
 
 const WidgetListContainer = connect(stateToPropertyMapper,dispatchToPropertyMapper)(WidgetList);

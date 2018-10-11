@@ -2,7 +2,7 @@ import React from "react";
 
 let newText = "";
 
-const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,preview,topic}) =>
+const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChange,orderTypeChange,preview,topic}) =>
     <div className="container border d-flex flex-column justify-content-around mt-2">
         {preview === 0 &&
             <div>
@@ -42,10 +42,24 @@ const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChang
             </textarea>
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
-                    <select className="form-control" name="orderingtype" id="ordering">
-                        <option value="Unordered">Unordered list</option>
-                        <option value="Ordered">Ordered list</option>
-                    </select>
+                    {widget.orderType === "unorder" &&
+                     <select className="form-control"
+                             name="orderingtype"
+                             onChange={(event)=>orderTypeChange(widget,topic,preview,event.currentTarget.value)}
+                             id="ordering">
+                         <option value="unorder">Unordered list</option>
+                         <option value="order">Ordered list</option>
+                     </select>
+                    }
+                    {widget.orderType === "order" &&
+                     <select className="form-control"
+                             name="orderingtype"
+                             onChange={(event)=>orderTypeChange(widget,topic,preview,event.currentTarget.value)}
+                             id="ordering">
+                         <option value="order">Ordered list</option>
+                         <option value="unorder">Unordered list</option>
+                     </select>
+                    }
                 </div>
                 <div className="row pl-4 pr-4 mt-4">
                     <input type="text" className="form-control" placeholder="Widget name"/>
@@ -54,9 +68,16 @@ const ListWidget = ({widget,deleteWidget,moveUpWidget,moveDownWidget,onTextChang
         }
         <div className="row d-flex flex-column pl-4 pr-4 mt-4">
             {preview === 0 && <h3>Preview</h3>}
-            <ul>
-                {widget.items.split(",").map(item => <li>{item}</li>)}
-            </ul>
+            {widget.orderType === "unorder" &&
+             <ul>
+                 {widget.items.split(",").map(item => <li>{item}</li>)}
+             </ul>
+            }
+            {widget.orderType === "order" &&
+             <ol>
+                 {widget.items.split(",").map(item => <li>{item}</li>)}
+             </ol>
+            }
         </div>
     </div>;
 
