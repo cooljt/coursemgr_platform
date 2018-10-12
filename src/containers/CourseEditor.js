@@ -45,14 +45,24 @@ export default class CourseEditor extends React.Component {
 
     selectModule = (module) => {
         this.setState({selectedModule:module});
-        this.setState({selectedLesson:module.lessons[0]});
-        this.setState({selectedTopic:module.lessons[0].topics[0]});
-
+        if (module.lessons.length !== 0) {
+            this.setState({selectedLesson:module.lessons[0]});
+            if (module.lessons[0].topics.length !== 0) {
+                this.setState({selectedTopic:module.lessons[0].topics[0]})
+            }
+            else {
+                this.setState({selectedTopics:{title:"",widgets:[]}});
+            }
+        }
+        else {
+            this.setState({selectedLesson:{title:"",topics:[]}, selectedTopic:{title:"",widgets:[]}});
+        }
     };
 
     selectLesson = (lesson) => {
         this.setState({selectedLesson:lesson});
-        this.setState({selectedTopic:lesson.topics[0]});
+        lesson.topics.length !==0 ? this.setState({selectedTopic:lesson.topics[0]})
+                                    :this.setState({selectedTopic:{title:"",widgets:[]}});
     };
 
     selectTopic = (topic) => {
@@ -186,28 +196,34 @@ export default class CourseEditor extends React.Component {
                         />
                     </div>
                     <div className="col-8">
-                        <LessonTabs
-                            selectLesson={this.selectLesson}
-                            selectedLesson={this.state.selectedLesson}
-                            addLesson={this.addLesson}
-                            changeLessonTitle={this.changeLessonTitle}
-                            deleteLesson={this.deleteLesson}
-                            lessons={this.state.selectedModule.lessons}
-                            module={this.state.selectedModule}/>
-                        <TopicPills
-                            selectTopic={this.selectTopic}
-                            selectedTopic={this.state.selectedTopic}
-                            addTopic={this.addTopic}
-                            changeTopicTitle={this.changeTopicTitle}
-                            deleteTopic={this.deleteTopic}
-                            topics={this.state.selectedLesson.topics}
-                            module={this.state.selectedModule}
-                            lesson={this.state.selectedLesson}/>
-                        <Provider store={store}>
+                        {this.state.course.modules.length !== 0 &&
+                         <LessonTabs
+                             selectLesson={this.selectLesson}
+                             selectedLesson={this.state.selectedLesson}
+                             addLesson={this.addLesson}
+                             changeLessonTitle={this.changeLessonTitle}
+                             deleteLesson={this.deleteLesson}
+                             lessons={this.state.selectedModule.lessons}
+                             module={this.state.selectedModule}/>
+                        }
+                        {this.state.selectedModule.lessons.length !== 0 &&
+                         <TopicPills
+                             selectTopic={this.selectTopic}
+                             selectedTopic={this.state.selectedTopic}
+                             addTopic={this.addTopic}
+                             changeTopicTitle={this.changeTopicTitle}
+                             deleteTopic={this.deleteTopic}
+                             topics={this.state.selectedLesson.topics}
+                             module={this.state.selectedModule}
+                             lesson={this.state.selectedLesson}/>
+                        }
+                        {this.state.selectedLesson.topics.length !== 0 &&
+                            <Provider store={store}>
                             <WidgetListContainer
-                                initWidgets={this.state.selectedTopic.widgets}
-                                topic={this.state.selectedTopic}/>
-                        </Provider>
+                            initWidgets={this.state.selectedTopic.widgets}
+                            topic={this.state.selectedTopic}/>
+                            </Provider>
+                        }
                     </div>
                 </div>
             </div>
