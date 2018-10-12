@@ -1,9 +1,9 @@
 import React from 'react'
 
 const ModuleListItem = ({module, selectModule, selected, deleteModule, changeModuleTitle}) =>
-    <div className="d-flex flex-row">
+    <div className="d-flex flex-row mb-2">
         <li onClick={() => selectModule(module)}
-            className={selected ? 'list-group-item active mt-2 w-100': 'list-group-item mt-2 w-100'}>
+            className={selected ? 'list-group-item active mt-2 w-100': 'list-group-item bg-secondary text-white mt-2 w-100'}>
             {module.title}
         </li>
         <div className="d-flex flex-column justify-content-around mt-2">
