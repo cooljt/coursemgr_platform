@@ -48,16 +48,16 @@ export default class CourseEditor extends React.Component {
         this.setState({selectedLesson:module.lessons[0]});
         this.setState({selectedTopic:module.lessons[0].topics[0]});
 
-    }
+    };
 
     selectLesson = (lesson) => {
         this.setState({selectedLesson:lesson});
         this.setState({selectedTopic:lesson.topics[0]});
-    }
+    };
 
     selectTopic = (topic) => {
         this.setState({selectedTopic:topic});
-    }
+    };
 
     deleteModule = (module) => {
         let modules = this.state.course.modules.filter((m) => module !== m );
@@ -65,22 +65,28 @@ export default class CourseEditor extends React.Component {
         course.modules = modules;
         this.setState({course:course});
         if (this.state.course.modules.length !== 0) {
-            this.selectModule(this.state.course.modules[0]);
+            this.selectModule(this.state.course.modules[this.state.course.modules.length-1]);
         }
         else {
             this.setState({selectedModule:{title:"",lessons:[]}})
             this.setState({selectedLesson:{title:"",topics:[]}});
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
-    }
+    };
 
     deleteLesson = (module, lesson) => {
         let course = this.state.course;
-        let selectModule = course.modules.find((m) => m===module);
-        selectModule.lessons = selectModule.lessons.filter((l) => lesson !== l);
+        let sModule = course.modules.find((m) => m===module);
+        sModule.lessons = sModule.lessons.filter((l) => lesson !== l);
         this.setState({course:course});
-        this.setState({selectedLesson:module.lessons[0]});
-    }
+        if (module.lessons.length !== 0) {
+            this.selectLesson(module.lessons[module.lessons.length-1]);
+        }
+        else {
+            this.setState({selectedLesson:{title:"",topics:[]}});
+            this.setState({selectedTopic:{title:"",widgets:[]}});
+        }
+    };
 
     deleteTopic = (module, lesson, topic) => {
         let course = this.state.course;
@@ -88,14 +94,20 @@ export default class CourseEditor extends React.Component {
         let selectLesson = selectModule.lessons.find((l) => l===lesson);
         selectLesson.topics = selectLesson.topics.filter((t) => topic !== t);
         this.setState({course:course});
-        this.setState({selectedTop:this.state.selectedLesson.topics[0]})
-    }
+        if (lesson.topics.length !== 0) {
+            this.selectTopic(lesson.topics[lesson.topics.length-1]);
+        }
+        else {
+            this.setState({selectedTopic:{title:"",widgets:[]}});
+        }
+    };
 
     addModule = (module) => {
         let course = this.state.course;
         course.modules.push(module);
         this.setState({course:course});
-    }
+        this.selectModule(module);
+    };
 
     addLesson = (module,lesson) => {
         let course = this.state.course;
@@ -103,7 +115,8 @@ export default class CourseEditor extends React.Component {
         let chooseModule = modules.find((m) => {return m===module});
         chooseModule.lessons.push(lesson);
         this.setState({course:course});
-    }
+        this.selectLesson(lesson);
+    };
 
     addTopic = (module, lesson, topic) => {
         let course = this.state.course;
@@ -117,7 +130,8 @@ export default class CourseEditor extends React.Component {
         chooseModule.lessons = lessons;
 
         this.setState({course:course});
-    }
+        this.selectTopic(topic);
+    };
 
     changeModuleTitle = (module, newTitle) => {
         let course = this.state.course;
@@ -125,7 +139,7 @@ export default class CourseEditor extends React.Component {
         let editModule = modules.find((m) => {return m === module});
         editModule.title = newTitle;
         this.setState({course:course});
-    }
+    };
 
     changeLessonTitle = (module, lesson, newTitle) => {
         let course = this.state.course;
@@ -133,7 +147,7 @@ export default class CourseEditor extends React.Component {
         let editLesson = editModule.lessons.find((l) => {return l === lesson});
         editLesson.title = newTitle;
         this.setState({course:course});
-    }
+    };
 
     changeTopicTitle = (module, lesson, topic, newTitle) => {
         let course = this.state.course;
@@ -142,7 +156,7 @@ export default class CourseEditor extends React.Component {
         let editTopic = editLesson.topics.find((t) => {return t === topic});
         editTopic.title = newTitle;
         this.setState({course:course});
-    }
+    };
 
 
 

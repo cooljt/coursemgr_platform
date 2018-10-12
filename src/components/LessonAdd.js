@@ -18,7 +18,7 @@ class LessonAdd extends React.Component {
     }
 
     createNewLesson() {
-        let newLesson = {title:this.state.title,topics:[{title:"",widgets:[]}]};
+        let newLesson = {id:(new Date()).getTime().toString(),title:this.state.title,topics:[{title:"",widgets:[]}]};
         this.props.addLesson(this.props.module, newLesson);
         this.clear();
     }

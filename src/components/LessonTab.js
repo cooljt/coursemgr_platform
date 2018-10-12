@@ -4,15 +4,19 @@ const LessonTab = ({lesson, module, selectLesson, deleteLesson, changeLessonTitl
     {
         if (lesson.title !== "") {
             return (<li className="nav-item ml-2 mt-2 mb-2">
-                <a onClick={() => selectLesson(lesson)}
-                   className={selected ? "nav-link active" : "nav-link"}>
-                    {lesson.title}
-                    <i onClick={()=>{
-                        let newTitle = prompt("Input New Lesson Title: ", lesson.title);
-                        changeLessonTitle(module, lesson, newTitle);
-                    }}className="fa fa-edit float-right ml-2"></i>
-                    <i onClick={()=>deleteLesson(module, lesson)} className="fa fa-times float-right"></i>
-                </a>
+                <div className="d-flex flex-row">
+                    <a onClick={() => selectLesson(lesson)}
+                       className={selected ? "nav-link active" : "nav-link"}>
+                        {lesson.title}
+                    </a>
+                    <div className="d-flex flex-column justify-content-around">
+                        <i onClick={()=>{
+                            let newTitle = prompt("Input New Lesson Title: ", lesson.title);
+                            changeLessonTitle(module, lesson, newTitle);
+                        }}className="fa fa-edit ml-2"></i>
+                        <i onClick={()=>deleteLesson(module, lesson)} className="fa fa-times ml-2"></i>
+                    </div>
+                </div>
             </li>);
         }
         return (<li></li>);
