@@ -18,10 +18,9 @@ export default class CourseEditor extends React.Component {
 
         const courseId = this.props.match.params.courseId;
 
-        const course = CourseServiceSingleton.findCourseById(courseId)
-        /*const course = this.props.courses.find(
+        const course = this.props.courses.find(
             course => course.id == courseId
-        );*/
+        );
         let selectedModule = {title:"",lessons:[]};
         let selectedLesson = {title:"",topics:[]};
         let selectedTopic = {title:"",widgets:[]};

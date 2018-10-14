@@ -7,14 +7,14 @@ export default class CourseManager extends React.Component {
 
     constructor() {
         super();
-        this.state = {courses:[]}
+        this.state = {courses:[]};
         this.deleteCourse = this.deleteCourse.bind(this);
         this.createCourse = this.createCourse.bind(this);
     }
 
     findAllCourses() {
-        let courses = CourseServiceSingleton.findAllCourse();
-        this.setState({courses:courses});
+        CourseServiceSingleton.findAllCourse()
+            .then(courses => this.setState({courses:courses}));
     }
 
     componentDidMount() {

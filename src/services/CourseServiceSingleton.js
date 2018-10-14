@@ -237,17 +237,28 @@ var allCourses = [
     }
 ];
 
+const COURSE_SERVICE_URL = "http://localhost:8080/api/courses";
 
 export default class CourseServiceSingleton {
 
     static createCourse(course) {
-        allCourses.push(course);
+            return fetch(COURSE_SERVICE_URL, {
+                body: JSON.stringify(course),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST'
+            }).then(response => response.json())
     }
     static findAllCourse() {
-        return allCourses;
+        //return allCourses;
+        return fetch(COURSE_SERVICE_URL).then(response => {return response.json()});
     }
     static findCourseById(id) {
-        return allCourses.find(course => course.id === id);
+        //return allCourses.find(course => course.id === id);
+        return fetch(COURSE_SERVICE_URL)
+            .then(response => {return response.json()})
+            .then(courses => {return courses.find(course => course.id == id)});
     }
 
     static updateCourse(id, course) {

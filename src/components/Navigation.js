@@ -14,10 +14,10 @@ export default class Navigation extends React.Component {
 
     createNewCourse() {
          let newCourse = {
-            "id":(new Date()).getTime().toString(),
+            "id":(new Date()).getTime(),
             "title":this.state.title,
             "modules":[]
-        }
+        };
         this.props.createCourse(newCourse);
     }
 
