@@ -218,6 +218,24 @@ const WidgetReducer = (state={widgets:[]}, action) => {
                 selectedTopic:action.topic,
                 preview:state.preview
             };
+        case "FIND_WIDGET":
+            return {
+                widgets:[],
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
+        case "FIND_ALL_WIDGETS":
+            return {
+                widgets:state.widgets,
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
+        case "FIND_ALL_WIDGETS_FOR_TOPIC":
+            return {
+                widgets:[],
+                selectedTopic:action.topic,
+                preview:state.preview
+            };
         default:
             return state;
     }
