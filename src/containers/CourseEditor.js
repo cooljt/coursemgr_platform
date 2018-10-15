@@ -10,7 +10,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 const store = createStore(WidgetReducer);
-
+let course;
 export default class CourseEditor extends React.Component {
 
     constructor(props) {
@@ -21,6 +21,7 @@ export default class CourseEditor extends React.Component {
         const course = this.props.courses.find(
             course => course.id == courseId
         );
+
         let selectedModule = {title:"",lessons:[]};
         let selectedLesson = {title:"",topics:[]};
         let selectedTopic = {title:"",widgets:[]};
@@ -167,7 +168,9 @@ export default class CourseEditor extends React.Component {
         this.setState({course:course});
     };
 
-
+    updateCourseById() {
+        CourseServiceSingleton.updateCourse(this.state.course.id, this.state.course);
+    }
 
     render() {
         return (
@@ -175,7 +178,7 @@ export default class CourseEditor extends React.Component {
                 <div className="row">
                     <nav className="w-100 navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                         <Link to="/courses/courseTable">
-                            <button className="btn btn_transparent"><i className="fa fa-times"></i></button>
+                            <button className="btn btn_transparent" onClick={()=>this.updateCourseById()}><i className="fa fa-times"></i></button>
                         </Link>
                         <p className="navbar-brand">{this.state.course.title} Course Editor</p>
                         <button className="navbar-toggler">

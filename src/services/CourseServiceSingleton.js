@@ -251,22 +251,21 @@ export default class CourseServiceSingleton {
             }).then(response => response.json())
     }
     static findAllCourse() {
-        //return allCourses;
         return fetch(COURSE_SERVICE_URL).then(response => {return response.json()});
     }
     static findCourseById(id) {
-        //return allCourses.find(course => course.id === id);
-        return fetch(COURSE_SERVICE_URL)
+        return fetch(COURSE_SERVICE_URL + "/" + id)
             .then(response => {return response.json()})
-            .then(courses => {return courses.find(course => course.id == id)});
     }
 
     static updateCourse(id, course) {
-        for (var i = 0; i < allCourses.length; i++) {
-            if (id === allCourses[i].id) {
-                allCourses[i] = course;
-            }
-        }
+        return fetch(COURSE_SERVICE_URL+"/"+id, {
+            body:JSON.stringify(course),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+             method: 'PUT'
+             }).then(response => response.json())
     }
     static deleteCourse(id) {
         return fetch(COURSE_SERVICE_URL + "/" + id,{method:"DELETE"})
