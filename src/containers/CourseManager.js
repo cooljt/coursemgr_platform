@@ -22,13 +22,13 @@ export default class CourseManager extends React.Component {
     }
 
     deleteCourse(id) {
-        CourseServiceSingleton.deleteCourse(id);
-        this.findAllCourses();
+        CourseServiceSingleton.deleteCourse(id)
+            .then(courses => this.setState({courses:courses}));
     }
 
     createCourse(newCourse) {
-        CourseServiceSingleton.createCourse(newCourse);
-        this.findAllCourses();
+        CourseServiceSingleton.createCourse(newCourse)
+            .then(courses => this.setState({courses:courses}));
     }
 
 

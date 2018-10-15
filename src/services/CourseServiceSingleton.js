@@ -269,7 +269,8 @@ export default class CourseServiceSingleton {
         }
     }
     static deleteCourse(id) {
-        allCourses = allCourses.filter(course => course.id !== id);
+        return fetch(COURSE_SERVICE_URL + "/" + id,{method:"DELETE"})
+            .then(response => {return response.json()});
     }
 
     static createWidget(topicId, widget) {
