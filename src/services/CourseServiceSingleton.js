@@ -272,7 +272,7 @@ export default class CourseServiceSingleton {
             .then(response => {return response.json()});
     }
 
-    static createWidget(topicId, widget) {
+    static (topicId, widget) {
         for (let c in allCourses) {
             for (let m in allCourses[c].modules) {
                 for (let l in allCourses[c].modules[m].lessons) {

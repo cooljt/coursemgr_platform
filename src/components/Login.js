@@ -9,7 +9,7 @@ const Login = () =>
                 <i className="fa fa-book mb-2 fa-4x"></i>
             </div>
             <h1 className="text-center">Sign In</h1>
-            <form>
+            <div>
                 <div className="form-group row">
                     <div className="col-sm">
                         <input type="text"
@@ -39,7 +39,7 @@ const Login = () =>
                         </Link>
                         </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
