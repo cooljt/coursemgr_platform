@@ -1,6 +1,7 @@
 import React from "react";
 import "../register.style.client.css";
 import {Link} from "react-router-dom";
+import history from "./history";
 
 
 const Register = ({registerUser}) =>
@@ -51,6 +52,7 @@ const Register = ({registerUser}) =>
                                         "password":password
                                     };
                                     registerUser(user);
+                                    //history.push("/profile");
                                 }
                             }
                         }>Sign Up</button>

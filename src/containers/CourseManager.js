@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
+import history from "../components/history";
 import CourseList from './CourseList';
 import CourseEditor from './CourseEditor';
 import CourseServiceSingleton from "../services/CourseServiceSingleton";
@@ -9,8 +10,8 @@ import Register from "../components/Register";
 import Profile from "../components/Profile";
 export default class CourseManager extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {user:{},courses:[]};
         this.deleteCourse = this.deleteCourse.bind(this);
         this.createCourse = this.createCourse.bind(this);
@@ -44,9 +45,8 @@ export default class CourseManager extends React.Component {
 
     render() {
         return (
-            <Router>
+            <Router history={history}>
                 <div className="container-fluid">
-                    <h1>{this.state.user.username}</h1>
                     <Route path="/" exact={true} render={()=><Login/>}/>
                     <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
                     <Route path="/profile" exact={true} render={()=><Profile user={this.state.user}/>}/>
