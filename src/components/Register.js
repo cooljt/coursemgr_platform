@@ -11,6 +11,9 @@ const Register = ({registerUser}) =>
                 <i className="fa fa-book mb-2 fa-4x"></i>
             </div>
             <h1 className="text-center">Register</h1>
+            <div className="alert alert-danger d-none" role="alert" id="alert">
+                Username is existed! Please choose another username!
+            </div>
             <div>
                 <div className="form-group row">
                     <div className="col-sm">
@@ -51,8 +54,14 @@ const Register = ({registerUser}) =>
                                         "username":username,
                                         "password":password
                                     };
-                                    registerUser(user);
-                                    //history.push("/profile");
+                                    registerUser(user).then(result => {
+                                        if (result) {
+                                            history.push("/profile");
+                                        }
+                                        else {
+                                            document.getElementById("alert").className = "alert alert-danger";
+                                        }
+                                    });
                                 }
                             }
                         }>Sign Up</button>

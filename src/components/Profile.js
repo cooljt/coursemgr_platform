@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "../profile.style.client.css";
 
-const Profile = ({user}) =>
+const Profile = ({user,updateProfile}) =>
     <div className="profile d-flex justify-content-center">
         <div className="container" id="profile_section">
             <div className="d-flex flex-row justify-content-center">
@@ -26,6 +26,7 @@ const Profile = ({user}) =>
                                placeholder="Username"
                                value={user.username}
                                id="profile-username"
+                               readOnly={true}
                                className="form-control" />
                     </div>
                 </div>
@@ -34,17 +35,17 @@ const Profile = ({user}) =>
                     <div className="col-sm-10">
                         <input type="number"
                                placeholder="(111)1111111"
-                               value={user.phone}
+                               defaultValue={user.phone}
                                id="profile_phone"
                                className="form-control"/>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="profile_email" className="col-sm-2">Phone</label>
+                    <label htmlFor="profile_email" className="col-sm-2">Email</label>
                     <div className="col-sm-10">
                         <input type="email"
                                placeholder="abc@gmail.com"
-                               value={user.email}
+                               defaultValue={user.email}
                                id="profile_email"
                                className="form-control"/>
                     </div>
@@ -64,7 +65,7 @@ const Profile = ({user}) =>
                     <div className="col-sm-10">
                         <input type="date"
                                placeholder="mm/dd/yy"
-                               value={user.birth}
+                               defaultValue={user.birth}
                                id="profile_date"
                                className="form-control"/>
                     </div>
@@ -73,7 +74,17 @@ const Profile = ({user}) =>
                     <div className="col-sm-2"></div>
                     <div className="col-sm-10">
                         <button className="btn btn-success btn-block" onClick={()=>{
-                            document.getElementById("alert").className = "alert alert-success";
+                            let phone = document.getElementById("profile_phone").value;
+                            let email = document.getElementById("profile_email").value;
+                            let birth = document.getElementById("profile_date").value;
+                            user["phone"] = phone;
+                            user["email"] = email;
+                            user["birth"] = birth;
+                            updateProfile(user).then(result => {
+                               if (result) {
+                                   document.getElementById("alert").className = "alert alert-success";
+                               }
+                            });
                         }}>Update</button>
                     </div>
                 </div>

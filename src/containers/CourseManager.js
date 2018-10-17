@@ -37,8 +37,16 @@ export default class CourseManager extends React.Component {
     }
 
     registerUser = (user) => {
-        UserServiceSingleton.register(user)
-            .then(usr => this.setState({user:usr}));
+        return UserServiceSingleton.register(user)
+            .then(usr => {
+                if (usr.id !== -10) {
+                    this.setState({user:usr});
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
     };
 
     loginUser = (user) => {
@@ -52,7 +60,15 @@ export default class CourseManager extends React.Component {
                     return false;
                 }
             });
-    }
+    };
+
+    updateProfile = (user) => {
+        return UserServiceSingleton.updateProfile(user)
+            .then(usr => {
+                this.setState({user:usr});
+                return true;
+            })
+    };
 
     render() {
         return (
@@ -60,7 +76,7 @@ export default class CourseManager extends React.Component {
                 <div className="container-fluid">
                     <Route path="/" exact={true} render={()=><Login loginUser={this.loginUser}/>}/>
                     <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
-                    <Route path="/profile" exact={true} render={()=><Profile user={this.state.user}/>}/>
+                    <Route path="/profile" exact={true} render={()=><Profile user={this.state.user} updateProfile={this.updateProfile}/>}/>
                     <Route path="/courses" render={()=><CourseList courses={this.state.courses} deleteCourse={this.deleteCourse} createCourse={this.createCourse}/>}/>
                     <Route path="/courseEditor/:courseId/edit" render={(props) => <CourseEditor {...props} courses={this.state.courses}/>}/>
                 </div>

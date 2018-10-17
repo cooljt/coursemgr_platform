@@ -19,4 +19,13 @@ export default class UserServiceSigleton {
                       },
              method: 'POST'}).then(usr => {return usr.json()});
     }
+
+    static updateProfile(user) {
+        return fetch(USER_SERVICE_URL+"/profile",{
+               body: JSON.stringify(user),
+                headers: {
+                           'Content-Type': 'application/json'
+                         },
+                 method: 'PUT'}).then(usr => {return usr.json()});
+    }
 }
