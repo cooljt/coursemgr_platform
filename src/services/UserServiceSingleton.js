@@ -28,4 +28,12 @@ export default class UserServiceSigleton {
                          },
                  method: 'PUT'}).then(usr => {return usr.json()});
     }
+
+    static logoutUser() {
+        return fetch(USER_SERVICE_URL+"/logout",{
+               headers: {
+                         'Content-Type': 'application/json'
+                         },
+                         method: 'POST'});
+    }
 }

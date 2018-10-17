@@ -12,9 +12,9 @@ export default class CourseList extends React.Component {
     render() {
         return (
             <div>
-                <Navigation createCourse={this.props.createCourse}/>
-                <Route path="/courses/courseTable" render={() => <CourseTable courses={this.props.courses} deleteCourse={this.props.deleteCourse}/>}/>
-                <Route path="/courses/courseGrid" render={() => <CourseGrid courses={this.props.courses} deleteCourse={this.props.deleteCourse}/>}/>
+                <Navigation logoutUser={this.props.logoutUser} user={this.props.user} createCourse={this.props.createCourse}/>
+                <Route path="/courses/courseTable" render={() => <CourseTable user={this.props.user} courses={this.props.courses} deleteCourse={this.props.deleteCourse}/>}/>
+                <Route path="/courses/courseGrid" render={() => <CourseGrid user={this.props.user} courses={this.props.courses} deleteCourse={this.props.deleteCourse}/>}/>
             </div>
         );
     }

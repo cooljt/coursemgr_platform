@@ -10,7 +10,7 @@ export default class CourseTable extends React.Component {
 
     renderList() {
         let module = this.props.courses.map((course,index) => {
-            return <CourseRow title={course.title} id={course.id} key={index} deleteCourse={this.props.deleteCourse}/>
+            return <CourseRow user={this.props.user.username} createTime={course.created} title={course.title} id={course.id} key={index} deleteCourse={this.props.deleteCourse}/>
         });
         return module;
     }

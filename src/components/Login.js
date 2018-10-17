@@ -41,7 +41,7 @@ const Login = ({loginUser}) =>
                             };
                             loginUser(user).then(result => {
                                 if(result){
-                                    history.push("/profile");
+                                    history.push("/courses/courseTable");
                                 }
                                 else {
                                     document.getElementById("alert").className = "alert alert-danger";

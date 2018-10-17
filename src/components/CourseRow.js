@@ -20,8 +20,8 @@ export default class CourseRow extends React.Component {
                             <p>{this.props.title}</p>
                         </Link>
                     </div>
-                    <div className="col-sm-2"><label>me</label></div>
-                    <div className="col-sm-2"><label>6:45PM</label></div>
+                    <div className="col-sm-2"><label>{this.props.user}</label></div>
+                    <div className="col-sm-2"><label>{this.props.createTime}</label></div>
                     <div className="col-sm-1"><i
                         onClick={() => this.props.deleteCourse(this.props.id)}
                         className="fa fa-times"></i></div>

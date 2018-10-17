@@ -55,6 +55,7 @@ export default class CourseManager extends React.Component {
             .then(usr => {
                 if (usr.id !== -10 ) {
                     this.setState({user:usr});
+                    this.findAllCourses(this.state.user.username);
                     return true;
                 }
                 else {
@@ -71,6 +72,11 @@ export default class CourseManager extends React.Component {
             })
     };
 
+    logoutUser = () => {
+        UserServiceSingleton.logoutUser();
+        this.setState({user:{},courses:[]});
+    };
+
     render() {
         return (
             <Router history={history}>
@@ -78,7 +84,7 @@ export default class CourseManager extends React.Component {
                     <Route path="/" exact={true} render={()=><Login loginUser={this.loginUser}/>}/>
                     <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
                     <Route path="/profile" exact={true} render={()=><Profile user={this.state.user} updateProfile={this.updateProfile}/>}/>
-                    <Route path="/courses" render={()=><CourseList courses={this.state.courses} deleteCourse={this.deleteCourse} createCourse={this.createCourse}/>}/>
+                    <Route path="/courses" render={()=><CourseList logoutUser={this.logoutUser} user={this.state.user} courses={this.state.courses} deleteCourse={this.deleteCourse} createCourse={this.createCourse}/>}/>
                     <Route path="/courseEditor/:courseId/edit" render={(props) => <CourseEditor {...props} courses={this.state.courses}/>}/>
                 </div>
             </Router>
