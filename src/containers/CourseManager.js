@@ -41,13 +41,24 @@ export default class CourseManager extends React.Component {
             .then(usr => this.setState({user:usr}));
     };
 
-
+    loginUser = (user) => {
+        return UserServiceSingleton.login(user)
+            .then(usr => {
+                if (usr.id !== -10 ) {
+                    this.setState({user:usr});
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+    }
 
     render() {
         return (
             <Router history={history}>
                 <div className="container-fluid">
-                    <Route path="/" exact={true} render={()=><Login/>}/>
+                    <Route path="/" exact={true} render={()=><Login loginUser={this.loginUser}/>}/>
                     <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
                     <Route path="/profile" exact={true} render={()=><Profile user={this.state.user}/>}/>
                     <Route path="/courses" render={()=><CourseList courses={this.state.courses} deleteCourse={this.deleteCourse} createCourse={this.createCourse}/>}/>

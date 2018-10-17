@@ -61,12 +61,12 @@ const Register = ({registerUser}) =>
                 <div className="row">
                     <div className="col-6">
                         <Link to="/">
-                            <a href="#" className="float-left" >Cancel</a>
+                            <span className="float-left" >Cancel</span>
                         </Link>
                     </div>
                     <div className="col-6">
                         <Link to="/">
-                            <a href="#" className="float-right">Login Up</a>
+                            <span className="float-right">Login Up</span>
                         </Link>
                     </div>
                 </div>

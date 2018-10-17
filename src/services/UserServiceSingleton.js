@@ -10,4 +10,13 @@ export default class UserServiceSigleton {
                       },
               method: 'POST'}).then(usr => {return usr.json()});
     }
+
+    static login(user) {
+        return fetch(USER_SERVICE_URL+"/login",{
+           body: JSON.stringify(user),
+            headers: {
+                      'Content-Type': 'application/json'
+                      },
+             method: 'POST'}).then(usr => {return usr.json()});
+    }
 }
