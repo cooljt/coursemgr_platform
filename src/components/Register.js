@@ -56,7 +56,7 @@ const Register = ({registerUser}) =>
                                     };
                                     registerUser(user).then(result => {
                                         if (result) {
-                                            history.push("/profile");
+                                            history.push("/courses/courseTable");
                                         }
                                         else {
                                             document.getElementById("alert").className = "alert alert-danger";

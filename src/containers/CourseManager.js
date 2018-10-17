@@ -17,14 +17,14 @@ export default class CourseManager extends React.Component {
         this.createCourse = this.createCourse.bind(this);
     }
 
-    findAllCourses() {
-        CourseServiceSingleton.findAllCourse()
+    findAllCourses(username) {
+        CourseServiceSingleton.findAllCourse(username)
             .then(courses => this.setState({courses:courses}));
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         this.findAllCourses();
-    }
+    }*/
 
     deleteCourse(id) {
         CourseServiceSingleton.deleteCourse(id)
@@ -41,6 +41,7 @@ export default class CourseManager extends React.Component {
             .then(usr => {
                 if (usr.id !== -10) {
                     this.setState({user:usr});
+                    this.findAllCourses(this.state.user.username);
                     return true;
                 }
                 else {
