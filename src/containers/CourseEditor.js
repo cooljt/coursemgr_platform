@@ -176,7 +176,8 @@ export default class CourseEditor extends React.Component {
         this.updateCourseById();
     };
 
-    updateCourseById() {
+    updateCourseById = () => {
+        console.log(this.state.course);
         CourseServiceSingleton.updateCourse(this.state.course.id, this.state.course);
     }
 
@@ -227,6 +228,7 @@ export default class CourseEditor extends React.Component {
                         {this.state.selectedLesson.topics.length !== 0 &&
                             <Provider store={store}>
                             <WidgetListContainer
+                                updateCourseById={this.updateCourseById}
                             initWidgets={this.state.selectedTopic.widgets}
                             topic={this.state.selectedTopic}/>
                             </Provider>

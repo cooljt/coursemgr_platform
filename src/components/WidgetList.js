@@ -80,7 +80,7 @@ export default class WidgetList extends React.Component {
                 <div className="row mt-2">
                     <div className="col-md-9 col-sm-10"></div>
                     <div className="col-md-3 col-sm-2 d-flex flex-row justify-content-end">
-                        <button className="btn btn-success" onClick={()=>{this.props.saveChange(this.props.topic,this.props.preview)}}>Save</button>
+                        <button className="btn btn-success" onClick={()=>{this.props.saveChange(this.props.topic,this.props.preview);this.props.updateCourseById()}}>Save</button>
                         <label className="text-justify ml-2">Preview</label>
                         {this.props.preview === 0 && <i className="fa fa-toggle-off fa-3x ml-2" onClick={()=>{this.props.changePreview(this.props.preview)}}></i>}
                         {this.props.preview === 1 && <i className="fa fa-toggle-on fa-3x ml-2" onClick={()=>{this.props.changePreview(this.props.preview)}}></i>}
