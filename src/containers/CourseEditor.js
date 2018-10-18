@@ -10,7 +10,6 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 const store = createStore(WidgetReducer);
-let course;
 export default class CourseEditor extends React.Component {
 
     constructor(props) {
@@ -82,6 +81,7 @@ export default class CourseEditor extends React.Component {
             this.setState({selectedLesson:{title:"",topics:[]}});
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
+        this.updateCourseById();
     };
 
     deleteLesson = (module, lesson) => {
@@ -96,6 +96,7 @@ export default class CourseEditor extends React.Component {
             this.setState({selectedLesson:{title:"",topics:[]}});
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
+        this.updateCourseById();
     };
 
     deleteTopic = (module, lesson, topic) => {
@@ -110,6 +111,7 @@ export default class CourseEditor extends React.Component {
         else {
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
+        this.updateCourseById();
     };
 
     addModule = (module) => {
@@ -117,6 +119,7 @@ export default class CourseEditor extends React.Component {
         course.modules.push(module);
         this.setState({course:course});
         this.selectModule(module);
+        this.updateCourseById();
     };
 
     addLesson = (module,lesson) => {
@@ -126,6 +129,7 @@ export default class CourseEditor extends React.Component {
         chooseModule.lessons.push(lesson);
         this.setState({course:course});
         this.selectLesson(lesson);
+        this.updateCourseById();
     };
 
     addTopic = (module, lesson, topic) => {
@@ -141,6 +145,7 @@ export default class CourseEditor extends React.Component {
 
         this.setState({course:course});
         this.selectTopic(topic);
+        this.updateCourseById();
     };
 
     changeModuleTitle = (module, newTitle) => {
@@ -149,6 +154,7 @@ export default class CourseEditor extends React.Component {
         let editModule = modules.find((m) => {return m === module});
         editModule.title = newTitle;
         this.setState({course:course});
+        this.updateCourseById();
     };
 
     changeLessonTitle = (module, lesson, newTitle) => {
@@ -157,6 +163,7 @@ export default class CourseEditor extends React.Component {
         let editLesson = editModule.lessons.find((l) => {return l === lesson});
         editLesson.title = newTitle;
         this.setState({course:course});
+        this.updateCourseById();
     };
 
     changeTopicTitle = (module, lesson, topic, newTitle) => {
@@ -166,6 +173,7 @@ export default class CourseEditor extends React.Component {
         let editTopic = editLesson.topics.find((t) => {return t === topic});
         editTopic.title = newTitle;
         this.setState({course:course});
+        this.updateCourseById();
     };
 
     updateCourseById() {
@@ -177,13 +185,10 @@ export default class CourseEditor extends React.Component {
             <div className="container-fluid">
                 <div className="row">
                     <nav className="w-100 navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-                        <Link to="/courses/courseTable">
-                            <button className="btn btn_transparent" onClick={()=>this.updateCourseById()}><i className="fa fa-times"></i></button>
-                        </Link>
                         <p className="navbar-brand">{this.state.course.title} Course Editor</p>
-                        <button className="navbar-toggler">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
+                        <Link to="/courses/courseTable">
+                            <button className="btn btn_dark mr-2" onClick={()=>this.updateCourseById()}><i className="fa fa-save"></i></button>
+                        </Link>
                     </nav>
                 </div>
                 <div className="row">

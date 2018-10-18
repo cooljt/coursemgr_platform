@@ -171,7 +171,6 @@ const WidgetReducer = (state={widgets:[]}, action) => {
                 preview:action.preview
             };
         case "SAVE":
-            CourseServiceSingleton.updateWiidgets(action.topic.id, state.widgets);
             alert("Save Successfully!");
             return {
                 widgets:[],
