@@ -1,5 +1,5 @@
 
-const USER_SERVICE_URL = "http://localhost:8080/api";
+const USER_SERVICE_URL = "https://cs5610-fall18-tijiang.herokuapp.com/api";
 
 export default class UserServiceSigleton {
     static register(user) {

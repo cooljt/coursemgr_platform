@@ -237,13 +237,13 @@ var allCourses = [
     }
 ];
 
-const COURSES_SERVICE_URL = "http://localhost:8080/api/courses";
-const COURSE_SERVICE_URL = "http://localhost:8080/api/course";
+const COURSES_SERVICE_URL = "https://cs5610-fall18-tijiang.herokuapp.com/api/courses";
+const COURSE_SERVICE_URL = "https://cs5610-fall18-tijiang.herokuapp.com/api/course";
 
 export default class CourseServiceSingleton {
 
     static createCourse(course) {
-            return fetch(COURSES_SERVICE_URL, {
+            return fetch(COURSE_SERVICE_URL, {
                 body: JSON.stringify(course),
                 headers: {
                     'Content-Type': 'application/json'
