@@ -24,7 +24,7 @@ const ImageWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onURLChan
                             <option value="image">Image</option>
                             <option value="heading">Heading</option>
                             <option value="list">List</option>
-                            <option value="image">Image</option>
+                            <option value="paragraph">Paragraph</option>
                             <option value="link">Link</option>
                         </select>
                         <button className="btn btn-danger ml-2" onClick={() => deleteWidget(widget,topic,preview)}>

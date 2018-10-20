@@ -91,7 +91,9 @@ const Profile = ({user,updateProfile}) =>
                 <div className="form-group row">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-10">
-                        <a href="#" className="btn btn-danger btn-block">Logout</a>
+                        <Link to="/courses/courseTable">
+                            <button className="btn btn-danger btn-block">Back</button>
+                        </Link>
                     </div>
                 </div>
             </div>

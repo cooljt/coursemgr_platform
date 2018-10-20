@@ -75,7 +75,7 @@ const Register = ({registerUser}) =>
                     </div>
                     <div className="col-6">
                         <Link to="/">
-                            <span className="float-right">Login Up</span>
+                            <span className="float-right">Login</span>
                         </Link>
                     </div>
                 </div>

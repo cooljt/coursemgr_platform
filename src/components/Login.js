@@ -54,7 +54,7 @@ const Login = ({loginUser}) =>
                     <div className="col-6"><a href="#" className="float-left">Forget Password?</a></div>
                     <div className="col-6">
                         <Link to="/register">
-                            <span className="float-right">Sign Up</span>
+                            <span className="float-right">Register Account</span>
                         </Link>
                     </div>
                 </div>

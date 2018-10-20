@@ -1,4 +1,3 @@
-import CourseServiceSingleton from "../services/CourseServiceSingleton"
 
 const defaultWidget = {
     "heading":{

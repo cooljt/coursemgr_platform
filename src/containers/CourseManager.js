@@ -80,7 +80,7 @@ export default class CourseManager extends React.Component {
     render() {
         return (
             <Router history={history}>
-                <div className="container-fluid">
+                <div className="container-flush">
                     <Route path="/" exact={true} render={()=><Login loginUser={this.loginUser}/>}/>
                     <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
                     <Route path="/profile" exact={true} render={()=><Profile user={this.state.user} updateProfile={this.updateProfile}/>}/>

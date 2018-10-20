@@ -11,7 +11,7 @@ export default class CourseList extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-flush">
                 <Navigation logoutUser={this.props.logoutUser} user={this.props.user} createCourse={this.props.createCourse}/>
                 <Route path="/courses/courseTable" render={() => <CourseTable user={this.props.user} courses={this.props.courses} deleteCourse={this.props.deleteCourse}/>}/>
                 <Route path="/courses/courseGrid" render={() => <CourseGrid user={this.props.user} courses={this.props.courses} deleteCourse={this.props.deleteCourse}/>}/>

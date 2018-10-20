@@ -26,7 +26,7 @@ const LinkWidget = ({widget,deleteWidget, moveUpWidget,moveDownWidget,onTextChan
                             <option value="heading">Heading</option>
                             <option value="list">List</option>
                             <option value="image">Image</option>
-                            <option value="image">Image</option>
+                            <option value="paragraph">Paragraph</option>
                         </select>
                         <button className="btn btn-danger ml-2" onClick={() => deleteWidget(widget,topic,preview)}>
                             <i className="fa fa-times"></i>
