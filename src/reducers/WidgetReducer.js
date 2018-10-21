@@ -212,7 +212,6 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "CHANGE_WIDGET_TYPE":
             changeWidgetType(state.widgets,action.widget,action.widgetType);
-            console.log(state.widgets);
             return {
                 widgets:[],
                 selectedTopic:action.topic,
