@@ -1,29 +1,29 @@
 
 const defaultWidget = {
     "heading":{
-        "id":"1",
+        "id":-1,
         "type": "HEADING",
         "size": 1,
         "text": "Input your Heading Text"
     },
     "paragraph":{
-        "id":"2",
+        "id":-2,
         "type": "PARAGRAPH",
         "text": "Input your Paragraph Text"
     },
     "list":{
-        "id":"3",
+        "id":-3,
         "type": "LIST",
         "orderType":"unorder",
         "items": "Nodes"
     },
     "image":{
-        "id":"4",
+        "id":-4,
         "type": "IMAGE",
         "src": "https://picsum.photos/200"
     },
     "link":{
-        "id":"5",
+        "id":-5,
         "type": "LINK",
         "title": "Google",
         "href": "https://www.google.com"
@@ -32,7 +32,7 @@ const defaultWidget = {
 
 const addWidget = (widgets) => {
     let id = (new Date()).getTime().toString();
-    let newWidget = defaultWidget["heading"];
+    let newWidget = JSON.parse(JSON.stringify(defaultWidget["heading"]));
     newWidget.id = id;
     widgets.push(newWidget);
 };
@@ -126,7 +126,8 @@ const updateOrderType = (widgets,widget,order) => {
 const changeWidgetType = (widgets,widget,type) => {
     for (let index in widgets) {
         if (widgets[index].id === widget.id) {
-            widgets[index] = defaultWidget[type];
+            let newWidget = JSON.parse(JSON.stringify(defaultWidget[type]));
+            widgets[index] = newWidget;
             widgets[index].id = widget.id;
             return;
         }
@@ -211,6 +212,7 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "CHANGE_WIDGET_TYPE":
             changeWidgetType(state.widgets,action.widget,action.widgetType);
+            console.log(state.widgets);
             return {
                 widgets:[],
                 selectedTopic:action.topic,
