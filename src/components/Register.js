@@ -2,54 +2,61 @@ import React from "react";
 import "../register.style.client.css";
 import {Link} from "react-router-dom";
 import history from "./history";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 
 const Register = ({registerUser}) =>
     <div className="register d-flex justify-content-center">
         <div className="container" id="register_section">
-            <div className="d-flex flex-row justify-content-center">
-                <i className="fa fa-book mb-2 fa-4x"></i>
+            <div className="d-flex flex-row justify-content-center mb-5">
+                <i className="fa fa-registered fa-4x"></i>
             </div>
-            <h1 className="text-center">Register</h1>
             <div className="alert alert-danger d-none" role="alert" id="alert">
                 Username is existed! Please choose another username!
             </div>
             <div>
                 <div className="form-group row">
                     <div className="col-sm">
-                        <input type="text"
-                               placeholder="Username"
+                        <TextField type="text"
+                                   label="Username"
+                                   variant="filled"
                                id="register-username"
-                               className="form-control" />
+                               className="w-100" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="col-sm">
-                        <input type="password"
-                               placeholder="Password"
+                        <TextField type="password"
+                                   label="Password"
+                                   variant="filled"
                                id="register-password"
-                               className="form-control" />
+                               className="w-100" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="col-sm">
-                        <input type="password"
-                               placeholder="Verify Password"
+                        <TextField type="password"
+                                   label="Verify Password"
+                                   variant="filled"
                                id="verify-password"
-                               className="form-control" />
+                               className="w-100" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="col-sm">
-                        <button className="btn btn-primary btn-block" onClick={
+                        <Button color="primary" variant="contained" className="w-100" onClick={
                             () => {
-                                let password = document.getElementById("register-password").value;
-                                let verifyPassword = document.getElementById("verify-password").value;
-                                if (password !== verifyPassword) {
+                                let password = document.getElementById("register-password").value.trim();
+                                let verifyPassword = document.getElementById("verify-password").value.trim();
+                                let username = document.getElementById("register-username").value.trim();
+                                if (username === "" || password === "") {
+                                    alert("All field is required!");
+                                }
+                                else if (password !== verifyPassword) {
                                     alert("Input passwords do not match please re-enter!");
                                 }
                                 else{
-                                    let username = document.getElementById("register-username").value;
                                     let user = {
                                         "username":username,
                                         "password":password
@@ -64,7 +71,7 @@ const Register = ({registerUser}) =>
                                     });
                                 }
                             }
-                        }>Sign Up</button>
+                        }>Sign Up</Button>
                     </div>
                 </div>
                 <div className="row">

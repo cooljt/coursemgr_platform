@@ -4,6 +4,8 @@ import {Link} from "react-router-dom"
 import history from "./history";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const Login = ({loginUser}) =>
     <div className="login d-flex flex-column justify-content-center">
@@ -17,32 +19,35 @@ const Login = ({loginUser}) =>
         <div className="container" id="login_section">
             <div className="d-flex flex-row justify-content-center">
                 <i className="fa fa-book mb-2 fa-4x"></i>
+                {/*<BookIcon fontSize="large"/>*/}
             </div>
-            <h1 className="text-center">Sign In</h1>
+            {/*<h1 className="text-center">Sign In</h1>*/}
             <div className="alert alert-danger d-none" role="alert" id="alert">
                 Username or Password is wrong! Please try again!
             </div>
             <div>
                 <div className="form-group row">
                     <div className="col-sm">
-                        <input type="text"
-                               placeholder="Username"
+                        <TextField type="text"
+                                   label="Username"
                                id="login-username"
-                               className="form-control" />
+                                className="w-100"/>
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="col-sm">
-                        <input type="password"
+                        <TextField type="password"
                                placeholder="Password"
+                                   label="Password"
                                id="login-password"
-                               className="form-control" />
+                                   className="w-100"
+                                />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="col-sm">
-                        <button className="btn btn-primary btn-block" onClick={()=>{
-                            let username = document.getElementById("login-username").value;
+                        <Button variant="contained" color="primary" className="w-100" onClick={()=>{
+                            let username = document.getElementById("login-username").value.trim();
                             let password = document.getElementById("login-password").value;
                             let user = {
                                 "username":username,
@@ -56,11 +61,15 @@ const Login = ({loginUser}) =>
                                     document.getElementById("alert").className = "alert alert-danger";
                                 }
                             })
-                        }}>Sign In</button>
+                        }}>Sign In</Button>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6"><a href="#" className="float-left">Forget Password?</a></div>
+                    <div className="col-6">
+                        <Link to="/">
+                            <span className="float-left">Forget Password?</span>
+                        </Link>
+                    </div>
                     <div className="col-6">
                         <Link to="/register">
                             <span className="float-right">Register Account</span>
