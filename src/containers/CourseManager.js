@@ -90,7 +90,7 @@ export default class CourseManager extends React.Component {
                         }
                         else {
                             return  <div className="d-flex justify-content-center">
-                                        <Paper className="text-center w-50 mt-5 pt-5 pb-5" elevation="20"><h1>You must <Link to="/">login</Link> first!</h1></Paper>
+                                        <Paper className="text-center w-50 mt-5 pt-3 pb-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
                                     </div>
                         }
                     }}/>
@@ -100,7 +100,7 @@ export default class CourseManager extends React.Component {
                             }
                             else {
                                 return <div className="d-flex justify-content-center">
-                                            <Paper className="text-center w-50 mt-5 pt-5 pb-5" elevation="20"><h1>You must <Link to="/">login</Link> first!</h1></Paper>
+                                            <Paper className="text-center w-50 mt-5 pt-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
                                        </div>
                             }
                         }
@@ -111,7 +111,7 @@ export default class CourseManager extends React.Component {
                         }
                         else {
                             return <div className="d-flex justify-content-center">
-                                        <Paper className="text-center w-50 mt-5 pt-5 pb-5" elevation="20"><h1>You must <Link to="/">login</Link> first!</h1></Paper>
+                                        <Paper className="text-center w-50 mt-5 pt-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
                                     </div>
 
 

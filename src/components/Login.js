@@ -11,8 +11,8 @@ const Login = ({loginUser}) =>
     <div className="login d-flex flex-column justify-content-center">
         <div className="d-flex justify-content-center mb-5">
             <Paper elevation="10" className="w-50 p-5 text-center">
-                <Typography variant="h4">
-                    Course Management Platform
+                <Typography variant="h5">
+                    Course Platform
                 </Typography>
             </Paper>
         </div>
