@@ -12,7 +12,7 @@ export default class CourseGrid extends React.Component {
 
     renderList() {
         var courses = this.props.courses.map((course,index) => {
-            return <CourseCard title={course.title} key={index} id={course.id} deleteCourse={this.props.deleteCourse}/>
+            return <CourseCard title={course.title} user={this.props.user.username} createTime={course.created} key={index} id={course.id} deleteCourse={this.props.deleteCourse}/>
         });
         return courses;
     }
@@ -21,7 +21,7 @@ export default class CourseGrid extends React.Component {
         return (
             <div className="container-fluid">
                 <CourseGridTitle/>
-                <div className="card-columns">
+                <div className>
                     {this.renderList()}
                 </div>
             </div>

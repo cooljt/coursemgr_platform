@@ -10,10 +10,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import PeopleIcon from '@material-ui/icons/People'
 import ExitIcon from '@material-ui/icons/ExitToApp';
+import Hidden from "@material-ui/core/Hidden";
 export default class Navigation extends React.Component {
 
     constructor(props) {
@@ -43,7 +42,7 @@ export default class Navigation extends React.Component {
         return (
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
                             <div className="row" id="nav_panel_upper">
-                                <div className="col-sm-1 home_center">
+                                <div className="col-sm-1 col-12  home_center">
                                     <Button onClick={()=>this.setState({left:true})}>
                                         <span className="navbar-toggler-icon text-white"></span>
                                     </Button>
@@ -63,13 +62,15 @@ export default class Navigation extends React.Component {
                                         </div>
                                     </Drawer>
                                 </div>
-                                <div className="col-sm-2 home_center" id="title">
-                                    <Typography variant="h6" color="inherit">Course Manager</Typography>
-                                </div>
-                                <div className="col-sm-8 home_center">
+                                <Hidden xsDown>
+                                    <div className="col-sm-2 home_center" id="title">
+                                        <Typography variant="h6" color="inherit">Course Manager</Typography>
+                                    </div>
+                                </Hidden>
+                                <div className="col-sm-7 col-8  home_center">
                                     <TextField margin="normal" variant="outlined" label="New Course" onChange={this.inputChanged} className="w-100"/>
                                 </div>
-                                <div className="col-sm-1 home_center">
+                                <div className="col-sm-2 col-4  home_center">
                                     <Button variant="fab" mini color="secondary" onClick={() => this.createNewCourse()}>
                                         <AddIcon/>
                                     </Button>

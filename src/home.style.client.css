@@ -49,32 +49,11 @@ body {
 }
 
 
-@media (min-width: 576px) {
-	.card-columns {
-		column-count: 1;
-	}
-}
-
-@media (min-width: 768px) {
-	.card-columns {
-		column-count: 3;
-	}
-}
-
-
-@media (min-width: 992px) {
-	.card-columns {
-		column-count: 6;
-	}
-}
 
 .in_block {
 	display: inline-block;
 }
 
-.extra_padding_left {
-	padding-left: 70px;
-}
 
 .red {
 	color:red;
