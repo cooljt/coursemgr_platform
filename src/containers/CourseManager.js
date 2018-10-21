@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route} from 'react-router-dom';
+import {Router, Route, Link} from 'react-router-dom';
 import history from "../components/history";
 import CourseList from './CourseList';
 import CourseEditor from './CourseEditor';
@@ -8,11 +8,12 @@ import UserServiceSingleton from "../services/UserServiceSingleton";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Profile from "../components/Profile";
+import Paper from "@material-ui/core/Paper";
 export default class CourseManager extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {user:{},courses:[]};
+        this.state = {user:{},courses:[],login:false};
         this.deleteCourse = this.deleteCourse.bind(this);
         this.createCourse = this.createCourse.bind(this);
     }
@@ -54,7 +55,7 @@ export default class CourseManager extends React.Component {
         return UserServiceSingleton.login(user)
             .then(usr => {
                 if (usr.id !== -10 ) {
-                    this.setState({user:usr});
+                    this.setState({user:usr,login:true});
                     this.findAllCourses(this.state.user.username);
                     return true;
                 }
@@ -83,9 +84,39 @@ export default class CourseManager extends React.Component {
                 <div className="container-flush">
                     <Route path="/" exact={true} render={()=><Login loginUser={this.loginUser}/>}/>
                     <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
-                    <Route path="/profile" exact={true} render={()=><Profile user={this.state.user} updateProfile={this.updateProfile}/>}/>
-                    <Route path="/courses" render={()=><CourseList logoutUser={this.logoutUser} user={this.state.user} courses={this.state.courses} deleteCourse={this.deleteCourse} createCourse={this.createCourse}/>}/>
-                    <Route path="/courseEditor/:courseId/edit" render={(props) => <CourseEditor {...props} courses={this.state.courses}/>}/>
+                    <Route path="/profile" exact={true} render={()=>{
+                        if (this.state.login) {
+                            return <Profile user={this.state.user} updateProfile={this.updateProfile}/>
+                        }
+                        else {
+                            return  <div className="d-flex justify-content-center">
+                                        <Paper className="text-center w-50 mt-5 pt-5 pb-5" elevation="20"><h1>You must <Link to="/">login</Link> first!</h1></Paper>
+                                    </div>
+                        }
+                    }}/>
+                    <Route path="/courses" render={()=>{
+                            if (this.state.login) {
+                                return <CourseList logoutUser={this.logoutUser} user={this.state.user} courses={this.state.courses} deleteCourse={this.deleteCourse} createCourse={this.createCourse}/>
+                            }
+                            else {
+                                return <div className="d-flex justify-content-center">
+                                            <Paper className="text-center w-50 mt-5 pt-5 pb-5" elevation="20"><h1>You must <Link to="/">login</Link> first!</h1></Paper>
+                                       </div>
+                            }
+                        }
+                    }/>
+                    <Route path="/courseEditor/:courseId/edit" render={(props) => {
+                        if (this.state.login) {
+                            return <CourseEditor {...props} courses={this.state.courses}/>
+                        }
+                        else {
+                            return <div className="d-flex justify-content-center">
+                                        <Paper className="text-center w-50 mt-5 pt-5 pb-5" elevation="20"><h1>You must <Link to="/">login</Link> first!</h1></Paper>
+                                    </div>
+
+
+                        }
+                    }}/>
                 </div>
             </Router>
         );
