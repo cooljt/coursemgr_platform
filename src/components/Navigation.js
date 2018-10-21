@@ -44,7 +44,7 @@ export default class Navigation extends React.Component {
                             <div className="row" id="nav_panel_upper">
                                 <div className="col-sm-1 home_center">
                                     <Button onClick={()=>this.setState({left:true})}>
-                                        <span className="navbar-toggler-icon"></span>
+                                        <span className="navbar-toggler-icon text-white"></span>
                                     </Button>
                                     <Drawer open={this.state.left} onClose={()=>this.setState({left:false})}>
                                         <div tabIndex={0} role="button">

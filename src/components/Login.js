@@ -2,9 +2,18 @@ import React from "react";
 import "../login.style.client.css";
 import {Link} from "react-router-dom"
 import history from "./history";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 const Login = ({loginUser}) =>
-    <div className="login d-flex justify-content-center">
+    <div className="login d-flex flex-column justify-content-center">
+        <div className="d-flex justify-content-center mb-5">
+            <Paper elevation="10" className="w-50 p-5 text-center">
+                <Typography variant="h4">
+                    Course Management Platform
+                </Typography>
+            </Paper>
+        </div>
         <div className="container" id="login_section">
             <div className="d-flex flex-row justify-content-center">
                 <i className="fa fa-book mb-2 fa-4x"></i>
