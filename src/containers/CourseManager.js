@@ -9,6 +9,7 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import Profile from "../components/Profile";
 import Paper from "@material-ui/core/Paper";
+import ChatBot from "../components/ChatBot";
 export default class CourseManager extends React.Component {
 
     constructor(props) {
@@ -16,6 +17,7 @@ export default class CourseManager extends React.Component {
         this.state = {user:{},courses:[],login:false};
         this.deleteCourse = this.deleteCourse.bind(this);
         this.createCourse = this.createCourse.bind(this);
+
     }
 
     findAllCourses(username) {
@@ -77,48 +79,50 @@ export default class CourseManager extends React.Component {
         UserServiceSingleton.logoutUser();
         this.setState({user:{},courses:[]});
     };
-
     render() {
         return (
             <Router history={history}>
                 <div className="container-flush">
-                    <Route path="/" exact={true} render={()=><Login loginUser={this.loginUser}/>}/>
-                    <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
-                    <Route path="/profile" exact={true} render={()=>{
-                        if (this.state.login) {
-                            return <Profile user={this.state.user} updateProfile={this.updateProfile}/>
-                        }
-                        else {
-                            return  <div className="d-flex justify-content-center">
-                                        <Paper className="text-center w-50 mt-5 pt-3 pb-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
-                                    </div>
-                        }
-                    }}/>
-                    <Route path="/courses" render={()=>{
+                        <Route path="/ChatBot" exact={true} render={()=><ChatBot/>}/>
+                        <Route path="/" exact={true} render={()=><Login loginUser={this.loginUser}/>}/>
+                        <Route path="/register" exact={true} render={()=><Register registerUser={this.registerUser}/>}/>
+                        <Route path="/profile" exact={true} render={()=>{
+                            if (this.state.login) {
+                                return <Profile user={this.state.user} updateProfile={this.updateProfile}/>
+                            }
+                            else {
+                                return  <div className="d-flex justify-content-center">
+                                    <Paper className="text-center w-50 mt-5 pt-3 pb-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
+                                </div>
+                            }
+                        }}/>
+                        <Route path="/courses" render={()=>{
                             if (this.state.login) {
                                 return <CourseList logoutUser={this.logoutUser} user={this.state.user} courses={this.state.courses} deleteCourse={this.deleteCourse} createCourse={this.createCourse}/>
                             }
                             else {
                                 return <div className="d-flex justify-content-center">
-                                            <Paper className="text-center w-50 mt-5 pt-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
-                                       </div>
+                                    <Paper className="text-center w-50 mt-5 pt-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
+                                </div>
                             }
                         }
-                    }/>
-                    <Route path="/courseEditor/:courseId/edit" render={(props) => {
-                        if (this.state.login) {
-                            return <CourseEditor {...props} courses={this.state.courses}/>
-                        }
-                        else {
-                            return <div className="d-flex justify-content-center">
-                                        <Paper className="text-center w-50 mt-5 pt-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
-                                    </div>
+                        }/>
+                        <Route path="/courseEditor/:courseId/edit" render={(props) => {
+                            if (this.state.login) {
+                                return <CourseEditor {...props} courses={this.state.courses}/>
+                            }
+                            else {
+                                return <div className="d-flex justify-content-center">
+                                    <Paper className="text-center w-50 mt-5 pt-3" elevation="20"><p>You must <Link to="/">login</Link> first!</p></Paper>
+                                </div>
 
 
-                        }
-                    }}/>
+                            }
+                        }}/>
                 </div>
             </Router>
-        );
+        )
+
+
     }
 }

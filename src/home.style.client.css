@@ -48,7 +48,15 @@ body {
 	}
 }
 
+.bot {
+	border-radius: 30px;
+	background: #d4d6d1;
+}
 
+.user {
+	border-radius: 30px;
+	background: #478ee5;
+}
 
 .in_block {
 	display: inline-block;
