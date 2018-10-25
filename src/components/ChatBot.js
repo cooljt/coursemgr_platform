@@ -78,15 +78,15 @@ export default class ChatBot extends React.Component {
             <div className="container">
                 <div className="d-flex justify-content-center">
                     <Paper elevation="20" className="mt-5 p-5 w-50 text-center">
-                        <Typography variant="h5">Welcome To ChatBot!</Typography>
+                        <Typography variant="h6">Welcome To ChatBot!</Typography>
                     </Paper>
                 </div>
                 <div className="d-flex flex-column justify-content-start mt-5">
                     {this.renderResponse()}
                 </div>
-                <div className="d-flex justify-content-center mt-5 mb-3">
-                    <div className="row w-100 ml-5">
-                        <div className="col-10" onKeyDown={this.sendMsgByKey}>
+                <div className="d-flex justify-content-center mt-5 mb-4">
+                    <div className="row w-100 ml-auto">
+                        <div className="col-8 col-sm-10" onKeyDown={this.sendMsgByKey}>
                             <Tooltip title="Please say something, Dear!"
                                      disableHoverListener
                                      disableTouchListener
@@ -96,7 +96,7 @@ export default class ChatBot extends React.Component {
                                 <TextField type="text" id="msg" label="Text" variant="filled" className="w-100"/>
                             </Tooltip>
                         </div>
-                        <div className="col-2">
+                        <div className="col-4 col-sm-2">
                             <Button onClick={this.sendMsgByButton} className="h-100" variant="contained">Send</Button>
                         </div>
                     </div>
