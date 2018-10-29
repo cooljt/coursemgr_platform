@@ -1,8 +1,8 @@
-const TOPIC_SERVICE_URL = "https://cs5610-fall18-tijiang.herokuapp.com/api";
+const TOPIC_SERVICE_URL = "http://localhost:8080/api";
 
 export default class TopicServiceSingleton {
     static createTopic(lid,topic) {
-        return fetch(LESSON_SERVIVE_URL+"/lesson"+"/"+lid+"/topic", {
+        return fetch(TOPIC_SERVICE_URL+"/lesson"+"/"+lid+"/topic", {
                  body: JSON.stringify(topic),
              headers: {
                        'Content-Type': 'application/json'

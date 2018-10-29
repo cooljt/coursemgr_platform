@@ -12,7 +12,7 @@ class TopicAdd extends React.Component {
     }
 
     createNewTopic() {
-        let newTopic = {id:(new Date()).getTime().toString(),title:this.state.title,widgets:[]};
+        let newTopic = {title:this.state.title,widgets:[]};
         this.props.addTopic(this.props.module, this.props.lesson, newTopic);
         this.clear();
     }

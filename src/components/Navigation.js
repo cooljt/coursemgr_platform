@@ -27,11 +27,9 @@ export default class Navigation extends React.Component {
 
     createNewCourse() {
          let newCourse = {
-            "id":(new Date()).getTime(),
-             "author":this.props.user.username,
              "created":new Date(Date.now()),
-            "title":this.state.title,
-            "modules":[]
+             "title":this.state.title,
+             "modules":[]
         };
         this.props.createCourse(newCourse);
     }

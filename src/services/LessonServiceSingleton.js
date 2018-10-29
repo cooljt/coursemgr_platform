@@ -1,4 +1,4 @@
-const LESSON_SERVIVE_URL = "https://cs5610-fall18-tijiang.herokuapp.com/api";
+const LESSON_SERVIVE_URL = "http://localhost:8080/api";
 
 export default class LessonServiceSingleton {
     static createLesson(mid,lesson) {

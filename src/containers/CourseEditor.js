@@ -5,7 +5,10 @@ import LessonTabs from '../components/LessonTabs';
 import TopicPills from '../components/TopicPills';
 import WidgetReducer from '../reducers/WidgetReducer';
 import WidgetListContainer from '../containers/WidgetListContainer';
-import CourseServiceSingleton from "../services/CourseServiceSingleton";
+import ModuleServiceSingleton from '../services/ModuleServiceSingleton';
+import LessonServiceSingleton from '../services/LessonServiceSingleton';
+import TopicServiceSingleton from '../services/TopicServiceSingleton';
+import CourseServiceSingleton from '../services/CourseServiceSingleton';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
@@ -15,10 +18,10 @@ export default class CourseEditor extends React.Component {
     constructor(props) {
         super(props);
 
-        const courseId = this.props.match.params.courseId;
+        const courseId = parseInt(this.props.match.params.courseId);
 
         const course = this.props.courses.find(
-            course => course.id == courseId
+            course => course.id === courseId
         );
 
         let selectedModule = {title:"",lessons:[]};
@@ -81,7 +84,7 @@ export default class CourseEditor extends React.Component {
             this.setState({selectedLesson:{title:"",topics:[]}});
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
-        this.updateCourseById();
+        ModuleServiceSingleton.deleteModule(module.id);
     };
 
     deleteLesson = (module, lesson) => {
@@ -96,7 +99,7 @@ export default class CourseEditor extends React.Component {
             this.setState({selectedLesson:{title:"",topics:[]}});
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
-        this.updateCourseById();
+        LessonServiceSingleton.deleteLesson(lesson.id);
     };
 
     deleteTopic = (module, lesson, topic) => {
@@ -111,41 +114,47 @@ export default class CourseEditor extends React.Component {
         else {
             this.setState({selectedTopic:{title:"",widgets:[]}});
         }
-        this.updateCourseById();
+        TopicServiceSingleton.deleteTopic(topic.id);
     };
 
     addModule = (module) => {
-        let course = this.state.course;
-        course.modules.push(module);
-        this.setState({course:course});
-        this.selectModule(module);
-        this.updateCourseById();
+        ModuleServiceSingleton.createModule(this.state.course.id,  module)
+            .then(module => {
+                let course = this.state.course;
+                course.modules.push(module);
+                this.setState({course:course});
+                this.selectModule(module);
+            })
     };
 
     addLesson = (module,lesson) => {
-        let course = this.state.course;
-        let modules = course.modules;
-        let chooseModule = modules.find((m) => {return m===module});
-        chooseModule.lessons.push(lesson);
-        this.setState({course:course});
-        this.selectLesson(lesson);
-        this.updateCourseById();
+        LessonServiceSingleton.createLesson(module.id,lesson)
+            .then(lesson => {
+                let course = this.state.course;
+                let modules = course.modules;
+                let chooseModule = modules.find((m) => {return m===module});
+                chooseModule.lessons.push(lesson);
+                this.setState({course:course});
+                this.selectLesson(lesson);
+            });
     };
 
     addTopic = (module, lesson, topic) => {
-        let course = this.state.course;
-        let modules = course.modules;
-        let lessons = this.state.selectedModule.lessons;
+        TopicServiceSingleton.createTopic(lesson.id, topic)
+            .then(topic => {
+                let course = this.state.course;
+                let modules = course.modules;
+                let lessons = this.state.selectedModule.lessons;
 
-        let chooseLesson = lessons.find((l) => {return l===lesson});
-        chooseLesson.topics.push(topic);
+                let chooseLesson = lessons.find((l) => {return l===lesson});
+                chooseLesson.topics.push(topic);
 
-        let chooseModule = modules.find((m) => {return m===module});
-        chooseModule.lessons = lessons;
+                let chooseModule = modules.find((m) => {return m===module});
+                chooseModule.lessons = lessons;
 
-        this.setState({course:course});
-        this.selectTopic(topic);
-        this.updateCourseById();
+                this.setState({course:course});
+                this.selectTopic(topic);
+            });
     };
 
     changeModuleTitle = (module, newTitle) => {
@@ -154,7 +163,7 @@ export default class CourseEditor extends React.Component {
         let editModule = modules.find((m) => {return m === module});
         editModule.title = newTitle;
         this.setState({course:course});
-        this.updateCourseById();
+        ModuleServiceSingleton.updateModuleById(module.id, this.state.selectedModule)
     };
 
     changeLessonTitle = (module, lesson, newTitle) => {
@@ -163,7 +172,7 @@ export default class CourseEditor extends React.Component {
         let editLesson = editModule.lessons.find((l) => {return l === lesson});
         editLesson.title = newTitle;
         this.setState({course:course});
-        this.updateCourseById();
+        LessonServiceSingleton.updateLessonById(lesson.id,this.state.selectedLesson);
     };
 
     changeTopicTitle = (module, lesson, topic, newTitle) => {
@@ -173,13 +182,9 @@ export default class CourseEditor extends React.Component {
         let editTopic = editLesson.topics.find((t) => {return t === topic});
         editTopic.title = newTitle;
         this.setState({course:course});
-        this.updateCourseById();
+        TopicServiceSingleton.updateTopicById(topic.id, this.state.selectedTopic);
     };
 
-    updateCourseById = () => {
-        console.log(this.state.course);
-        CourseServiceSingleton.updateCourse(this.state.course.id, this.state.course);
-    }
 
     render() {
         return (

@@ -20,8 +20,8 @@ export default class CourseManager extends React.Component {
 
     }
 
-    findAllCourses(username) {
-        CourseServiceSingleton.findAllCourse(username)
+    findAllCourses(usrId) {
+        CourseServiceSingleton.findAllCourse(usrId)
             .then(courses => this.setState({courses:courses}));
     }
 
@@ -42,8 +42,8 @@ export default class CourseManager extends React.Component {
     registerUser = (user) => {
         return UserServiceSingleton.register(user)
             .then(usr => {
-                if (usr.id !== -10) {
-                    this.setState({user:usr});
+                if (usr.id !== 0) {
+                    this.setState({user:usr,login:true});
                     this.findAllCourses(this.state.user.username);
                     return true;
                 }
@@ -56,9 +56,10 @@ export default class CourseManager extends React.Component {
     loginUser = (user) => {
         return UserServiceSingleton.login(user)
             .then(usr => {
-                if (usr.id !== -10 ) {
+                console.log(usr);
+                if (usr.id !== 0 ) {
                     this.setState({user:usr,login:true});
-                    this.findAllCourses(this.state.user.username);
+                    this.findAllCourses(this.state.user.id);
                     return true;
                 }
                 else {

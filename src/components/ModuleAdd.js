@@ -13,7 +13,7 @@ class ModuleAdd extends React.Component {
     }
 
     createNewModule() {
-        let newModule = {id:(new Date()).getTime().toString(),title:this.state.title,lessons:[]}
+        let newModule = {title:this.state.title,lessons:[]};
         this.props.addModule(newModule);
         this.clear();
     }

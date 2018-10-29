@@ -1,4 +1,4 @@
-const MODULE_SERVIVE_URL = "https://cs5610-fall18-tijiang.herokuapp.com/api";
+const MODULE_SERVIVE_URL = "http://localhost:8080/api";
 
 export default class ModuleServiceSingleton {
     static createModule(cid,module) {
@@ -21,9 +21,9 @@ export default class ModuleServiceSingleton {
             .then(response => {return response.json()})
     }
 
-    static updateModuleById(mid,course) {
+    static updateModuleById(mid,module) {
         return fetch(MODULE_SERVIVE_URL + "/module/" + mid, {
-            body:JSON.stringify(course),
+            body:JSON.stringify(module),
              headers: {
                     'Content-Type': 'application/json'
              },
