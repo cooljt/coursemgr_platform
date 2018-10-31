@@ -65,12 +65,17 @@ const Login = ({loginUser}) =>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-5">
                         <Link to="/">
                             <span className="float-left">Forget Password?</span>
                         </Link>
                     </div>
-                    <div className="col-6">
+                    <div className="col-2">
+                        <Link to="/ChatBot">
+                            <span>ChatBot</span>
+                        </Link>
+                    </div>
+                    <div className="col-5">
                         <Link to="/register">
                             <span className="float-right">Register Account</span>
                         </Link>

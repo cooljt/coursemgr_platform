@@ -1,4 +1,8 @@
 import HeadingServiceSingleton from "../services/HeadingServiceSingleton";
+import ImageServiceSingleton from "../services/ImageServiceSingletion";
+import LinkServiceSingleton from "../services/LinkServiceSingleton";
+import ListServiceSingleton from "../services/ListServiceSingleton";
+import ParagraphServiceSingleton from "../services/ParagraphServiceSingletion";
 import WidgetServiceSingleton from "../services/WidgetServiceSingleton";
 
 const defaultWidget = {
@@ -32,7 +36,7 @@ const defaultWidget = {
     }
 };
 
-    const addWidget = (widgets,topic) => {
+const addWidget = (widgets,topic) => {
     let newWidget = JSON.parse(JSON.stringify(defaultWidget["heading"]));
     newWidget.rank = widgets.length;
     HeadingServiceSingleton.createHeadingWidget(topic.id, newWidget)
@@ -141,14 +145,70 @@ const changeWidgetType = (widgets,widget,type) => {
             let newWidget = JSON.parse(JSON.stringify(defaultWidget[type]));
             widgets[index] = newWidget;
             widgets[index].id = widget.id;
+            widgets[index].rank = widget.rank;
             return;
         }
     }
 };
 
 
-const saveWidgets = (widgets) => {
-    
+const saveWidgets = (widgets, topic) => {
+    for (let index in widgets) {
+        WidgetServiceSingleton.findWidgetById(widgets[index].id)
+            .then(widget => {
+                if(widget.type === widgets[index].type) {
+                    updateWidget(widgets[index]);
+                }
+                else {
+                    createNewWidget(widgets[index],topic.id);
+                }
+            });
+    }
+};
+
+const updateWidget = (widget) => {
+    switch(widget.type) {
+        case "HEADING":
+            HeadingServiceSingleton.updateWidgetById(widget.id, widget);
+            break;
+        case "PARAGRAPH":
+            ParagraphServiceSingleton.updateWidgetById(widget.id,widget);
+            break;
+        case "IMAGE":
+            ImageServiceSingleton.updateWidgetById(widget.id, widget);
+            break;
+        case "LINK":
+            LinkServiceSingleton.updateWidgetById(widget.id, widget);
+            break;
+        case "LIST":
+            ListServiceSingleton.updateWidgetById(widget.id, widget);
+            break;
+        default:
+            break;
+    }
+};
+
+const createNewWidget = (widget,tid) => {
+    WidgetServiceSingleton.deleteWidgetById(widget.id);
+    switch(widget.type) {
+        case "HEADING":
+            HeadingServiceSingleton.createHeadingWidget(tid,widget);
+            break;
+        case "PARAGRAPH":
+            ParagraphServiceSingleton.createParagraphWidget(tid,widget);
+            break;
+        case "IMAGE":
+            ImageServiceSingleton.createImageWidget(tid,widget);
+            break;
+        case "LINK":
+            LinkServiceSingleton.createLinkWidget(tid,widget);
+            break;
+        case "LIST":
+            ListServiceSingleton.createListWidget(tid,widget);
+            break;
+        default:
+            break;
+    }
 };
 
 const WidgetReducer = (state={widgets:[]}, action) => {
@@ -189,7 +249,8 @@ const WidgetReducer = (state={widgets:[]}, action) => {
                 preview:action.preview
             };
         case "SAVE":
-            saveWidgets(action.widgets);
+            saveWidgets(action.widgets,action.topic);
+            alert("Save successfully!");
             return {
                 widgets:[],
                 selectedTopic:action.topic,
