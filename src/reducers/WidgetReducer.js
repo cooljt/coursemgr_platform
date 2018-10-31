@@ -146,6 +146,11 @@ const changeWidgetType = (widgets,widget,type) => {
     }
 };
 
+
+const saveWidgets = (widgets) => {
+    
+};
+
 const WidgetReducer = (state={widgets:[]}, action) => {
     switch (action.type) {
         case "INIT":
@@ -178,14 +183,13 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "MOVE_DOWN":
             moveDownWidget(state.widgets,action.widget);
-            console.log(state.widgets);
             return {
                 widgets:[],
                 selectedTopic:action.topic,
                 preview:action.preview
             };
         case "SAVE":
-            alert("Save Successfully!");
+            saveWidgets(action.widgets);
             return {
                 widgets:[],
                 selectedTopic:action.topic,

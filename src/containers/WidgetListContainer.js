@@ -36,8 +36,9 @@ const dispatchToPropertyMapper = dispatch => ({
         widget:widget,
         topic:topic,
         preview:preview}),
-    saveChange: (topic,preview) => dispatch({
+    saveChange: (widgets,topic,preview) => dispatch({
         type:"SAVE",
+        widgets:widgets,
         topic:topic,
         preview:preview}),
     changePreview:(preview) => dispatch({

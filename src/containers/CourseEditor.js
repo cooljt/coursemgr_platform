@@ -8,7 +8,7 @@ import WidgetListContainer from '../containers/WidgetListContainer';
 import ModuleServiceSingleton from '../services/ModuleServiceSingleton';
 import LessonServiceSingleton from '../services/LessonServiceSingleton';
 import TopicServiceSingleton from '../services/TopicServiceSingleton';
-import CourseServiceSingleton from '../services/CourseServiceSingleton';
+import WidgetServiceSingleton from '../services/WidgetServiceSingleton';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
@@ -41,8 +41,13 @@ export default class CourseEditor extends React.Component {
             course: course,
             selectedModule: selectedModule,
             selectedLesson: selectedLesson,
-            selectedTopic: selectedTopic
+            selectedTopic: selectedTopic,
+            widgets:[]
         }
+    }
+
+    componentDidMount() {
+        this.selectTopic(this.state.selectedTopic);
     }
 
     selectModule = (module) => {
@@ -69,6 +74,8 @@ export default class CourseEditor extends React.Component {
 
     selectTopic = (topic) => {
         this.setState({selectedTopic:topic});
+        WidgetServiceSingleton.findAllWidgets(topic.id)
+            .then(widgets => this.setState({widgets:widgets}));
     };
 
     deleteModule = (module) => {
@@ -233,7 +240,7 @@ export default class CourseEditor extends React.Component {
                         {this.state.selectedLesson.topics.length !== 0 &&
                             <Provider store={store}>
                             <WidgetListContainer
-                            initWidgets={this.state.selectedTopic.widgets}
+                            initWidgets={this.state.widgets}
                             topic={this.state.selectedTopic}/>
                             </Provider>
                         }
