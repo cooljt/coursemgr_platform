@@ -1,46 +1,50 @@
+import HeadingServiceSingleton from "../services/HeadingServiceSingleton";
+import WidgetServiceSingleton from "../services/WidgetServiceSingleton";
 
 const defaultWidget = {
     "heading":{
-        "id":-1,
+        "rank":-1,
         "type": "HEADING",
         "size": 1,
         "text": "Input your Heading Text"
     },
     "paragraph":{
-        "id":-2,
+        "rank":-2,
         "type": "PARAGRAPH",
         "text": "Input your Paragraph Text"
     },
     "list":{
-        "id":-3,
+        "rank":-3,
         "type": "LIST",
         "orderType":"unorder",
         "items": "Nodes"
     },
     "image":{
-        "id":-4,
+        "rank":-4,
         "type": "IMAGE",
         "src": "https://picsum.photos/200"
     },
     "link":{
-        "id":-5,
+        "rank":-5,
         "type": "LINK",
         "title": "Google",
         "href": "https://www.google.com"
     }
 };
 
-const addWidget = (widgets) => {
-    let id = (new Date()).getTime().toString();
+    const addWidget = (widgets,topic) => {
     let newWidget = JSON.parse(JSON.stringify(defaultWidget["heading"]));
-    newWidget.id = id;
+    newWidget.rank = widgets.length;
+    HeadingServiceSingleton.createHeadingWidget(topic.id, newWidget)
+        .then(widget => newWidget.id = widget.id);
     widgets.push(newWidget);
 };
 
 const deleteWidget = (widgets,widget) => {
+    WidgetServiceSingleton.deleteWidgetById(widget.id);
     for (let index in widgets) {
         if (widgets[index].id === widget.id) {
-            widgets.splice(widgets[index],1)
+            widgets.splice(index,1)
         }
     }
 };
@@ -48,9 +52,13 @@ const deleteWidget = (widgets,widget) => {
 const moveUpWidget = (widgets, widget) => {
     for (let index in widgets) {
         if (index > 0 && widgets[index].id === widget.id) {
+            let rankPrevious = widgets[index-1].rank;
+            let rankCur = widgets[index].rank;
             let temp = widgets[index-1];
             widgets[index-1] = widgets[index];
             widgets[index] = temp;
+            widgets[index-1].rank = rankPrevious;
+            widgets[index].rank = rankCur;
             return;
         }
     }
@@ -60,9 +68,13 @@ const moveDownWidget = (widgets, widget) => {
     let end = widgets.length-1;
     for (let index in widgets) {
         if (index < end && widgets[index].id === widget.id) {
+            let rankNext = widgets[parseInt(index)+1].rank;
+            let rankCur = widgets[index].rank;
             let temp = widgets[parseInt(index)+1];
             widgets[parseInt(index)+1] = widgets[index];
             widgets[index] = temp;
+            widgets[parseInt(index)+1].rank = rankNext;
+            widgets[index].rank = rankCur;
             return;
         }
     }
@@ -143,7 +155,7 @@ const WidgetReducer = (state={widgets:[]}, action) => {
                 preview:action.preview
             };
         case "ADD_WIDGET":
-            addWidget(state.widgets);
+            addWidget(state.widgets,action.topic);
             return {
                 widgets:[],
                 selectedTopic:action.topic,
@@ -158,6 +170,7 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "MOVE_UP":
             moveUpWidget(state.widgets,action.widget);
+            console.log(state.widgets);
             return {
                 widgets:[],
                 selectedTopic:action.topic,
@@ -165,6 +178,7 @@ const WidgetReducer = (state={widgets:[]}, action) => {
             };
         case "MOVE_DOWN":
             moveDownWidget(state.widgets,action.widget);
+            console.log(state.widgets);
             return {
                 widgets:[],
                 selectedTopic:action.topic,

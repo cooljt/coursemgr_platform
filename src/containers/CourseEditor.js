@@ -193,7 +193,7 @@ export default class CourseEditor extends React.Component {
                     <nav className="w-100 navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                         <p className="navbar-brand">{this.state.course.title} Course Editor</p>
                         <Link to="/courses/courseTable">
-                            <button className="btn btn_dark mr-2" onClick={()=>this.updateCourseById()}><i className="fa fa-save"></i></button>
+                            <button className="btn btn_dark mr-2"><i className="fa fa-save"></i></button>
                         </Link>
                     </nav>
                 </div>
@@ -233,7 +233,6 @@ export default class CourseEditor extends React.Component {
                         {this.state.selectedLesson.topics.length !== 0 &&
                             <Provider store={store}>
                             <WidgetListContainer
-                                updateCourseById={this.updateCourseById}
                             initWidgets={this.state.selectedTopic.widgets}
                             topic={this.state.selectedTopic}/>
                             </Provider>
