@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://course-server-2018fall.herokuapp.com/api/topic";
-const IMAGEWIDGET_URL = "http://course-server-2018fall.herokuapp.com/api/image/widget";
+const TOPIC_URL = "https://course-server-2018fall.herokuapp.com/api/topic";
+const IMAGEWIDGET_URL = "https://course-server-2018fall.herokuapp.com/api/image/widget";
 
 export default class ImageServiceSingleton {
     static createImageWidget(topicId, imageWidget) {

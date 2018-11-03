@@ -1,4 +1,4 @@
-const MODULE_SERVIVE_URL = "http://course-server-2018fall.herokuapp.com/api";
+const MODULE_SERVIVE_URL = "https://course-server-2018fall.herokuapp.com/api";
 
 export default class ModuleServiceSingleton {
     static createModule(cid,module) {

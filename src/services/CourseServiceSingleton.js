@@ -1,6 +1,5 @@
-
-const COURSES_SERVICE_URL = "http://course-server-2018fall.herokuapp.com/api/courses";
-const COURSE_SERVICE_URL = "http://course-server-2018fall.herokuapp.com/api/course";
+const COURSES_SERVICE_URL = "https://course-server-2018fall.herokuapp.com/api/courses";
+const COURSE_SERVICE_URL = "https://course-server-2018fall.herokuapp.com/api/course";
 
 export default class CourseServiceSingleton {
 

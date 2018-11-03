@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://course-server-2018fall.herokuapp.com/api/topic";
-const PARAGRAPHWIDGET_URL = "http://course-server-2018fall.herokuapp.com/api/paragraph/widget";
+const TOPIC_URL = "https://course-server-2018fall.herokuapp.com/api/topic";
+const PARAGRAPHWIDGET_URL = "https://course-server-2018fall.herokuapp.com/api/paragraph/widget";
 
 export default class ParagraphServiceSingleton {
     static createParagraphWidget(topicId, paragraphWidget) {

@@ -1,5 +1,5 @@
 
-const USER_SERVICE_URL = "http://course-server-2018fall.herokuapp.com/api";
+const USER_SERVICE_URL = "https://course-server-2018fall.herokuapp.com/api";
 
 export default class UserServiceSigleton {
     static register(user) {
