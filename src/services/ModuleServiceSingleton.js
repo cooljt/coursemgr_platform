@@ -33,6 +33,6 @@ export default class ModuleServiceSingleton {
 
     static deleteModule(mid) {
         return fetch(MODULE_SERVIVE_URL + "/module/" + mid,{method:"DELETE"})
-            .then(response => {return response.json()});
+            .then(response => {return response});
     }
 }

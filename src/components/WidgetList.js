@@ -11,6 +11,7 @@ export default class WidgetList extends React.Component {
     constructor(props) {
         super(props);
         this.props.init(this.props.initWidgets, props.topic, 0);
+        console.log(this.props.widgets);
     }
 
     componentDidUpdate() {

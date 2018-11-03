@@ -33,6 +33,6 @@ export default class TopicServiceSingleton {
 
     static deleteTopic(tid) {
         return fetch(TOPIC_SERVICE_URL + "/topic/" + tid,{method:"DELETE"})
-            .then(response => {return response.json()});
+            .then(response => {return response});
     }
 }

@@ -25,6 +25,6 @@ export default class HeadingServiceSingleton {
 
     static deleteWidgetById(widgetId) {
         return fetch(HEADINGWIDGET_URL + "/" + widgetId,{method:'DELETE'})
-            .then(response => response.json());
+            .then(response => response);
     }
 }

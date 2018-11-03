@@ -25,6 +25,6 @@ export default class ParagraphServiceSingleton {
 
     static deleteWidgetById(widgetId) {
         return fetch(PARAGRAPHWIDGET_URL + "/" + widgetId,{method:'DELETE'})
-            .then(response => response.json());
+            .then(response => response);
     }
 }

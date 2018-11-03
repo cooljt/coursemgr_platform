@@ -25,6 +25,6 @@ export default class ListServiceSingleton {
 
     static deleteWidgetById(widgetId) {
         return fetch(LISTWIDGET_URL + "/" + widgetId,{method:'DELETE'})
-            .then(response => response.json());
+            .then(response => response);
     }
 }

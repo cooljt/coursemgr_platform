@@ -25,6 +25,6 @@ export default class ImageServiceSingleton {
 
     static deleteWidgetById(widgetId) {
         return fetch(IMAGEWIDGET_URL + "/" + widgetId,{method:'DELETE'})
-            .then(response => response.json());
+            .then(response => response);
     }
 }

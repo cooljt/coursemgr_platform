@@ -33,6 +33,6 @@ export default class LessonServiceSingleton {
 
     static deleteLesson(lid) {
         return fetch(LESSON_SERVIVE_URL + "/lesson/" + lid,{method:"DELETE"})
-            .then(response => {return response.json()});
+            .then(response => {return response});
     }
 }
