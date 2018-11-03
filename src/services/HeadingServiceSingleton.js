@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://course-server-2018fall/api/topic";
-const HEADINGWIDGET_URL = "http://course-server-2018fall/api/heading/widget";
+const TOPIC_URL = "http://course-server-2018fall.herokuapp.com/api/topic";
+const HEADINGWIDGET_URL = "http://course-server-2018fall.herokuapp.com/api/heading/widget";
 
 export default class HeadingServiceSingleton {
     static createHeadingWidget(topicId, headingWidget) {

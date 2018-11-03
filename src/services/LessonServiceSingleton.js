@@ -1,4 +1,4 @@
-const LESSON_SERVIVE_URL = "http://course-server-2018fall/api";
+const LESSON_SERVIVE_URL = "http://course-server-2018fall.herokuapp.com/api";
 
 export default class LessonServiceSingleton {
     static createLesson(mid,lesson) {

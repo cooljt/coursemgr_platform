@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://course-server-2018fall/api/topic";
-const LISTWIDGET_URL = "http://course-server-2018fall/api/list/widget";
+const TOPIC_URL = "http://course-server-2018fall.herokuapp.com/api/topic";
+const LISTWIDGET_URL = "http://course-server-2018fall.herokuapp.com/api/list/widget";
 
 export default class ListServiceSingleton {
     static createListWidget(topicId, listWidget) {

@@ -1,6 +1,6 @@
 
-const TOPIC_URL = "http://course-server-2018fall/api/topic/";
-const WIDGET_URL = "http://course-server-2018fall/api/widget";
+const TOPIC_URL = "http://course-server-2018fall.herokuapp.com/api/topic/";
+const WIDGET_URL = "http://course-server-2018fall.herokuapp.com/api/widget";
 
 export default class WidgetServiceSingleton {
 

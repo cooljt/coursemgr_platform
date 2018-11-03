@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://course-server-2018fall/api/topic";
-const LINKWIDGET_URL = "http://course-server-2018fall/api/link/widget";
+const TOPIC_URL = "http://course-server-2018fall.herokuapp.com/api/topic";
+const LINKWIDGET_URL = "http://course-server-2018fall.herokuapp.com/api/link/widget";
 
 export default class LinkServiceSingleton {
     static createLinkWidget(topicId, linkWidget) {
