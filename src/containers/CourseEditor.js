@@ -46,9 +46,9 @@ export default class CourseEditor extends React.Component {
         }
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         this.selectTopic(this.state.selectedTopic);
-    }
+    }*/
 
     selectModule = (module) => {
         this.setState({selectedModule:module});

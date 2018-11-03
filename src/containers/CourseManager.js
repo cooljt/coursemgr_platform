@@ -31,7 +31,7 @@ export default class CourseManager extends React.Component {
 
     deleteCourse(id) {
         CourseServiceSingleton.deleteCourse(id)
-            .then(courses => this.setState({courses:courses}));
+            .then(courses => {console.log(courses);this.setState({courses:courses})});
     }
 
     createCourse(newCourse) {

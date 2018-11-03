@@ -31,7 +31,7 @@ export default class CourseServiceSingleton {
     }
     static deleteCourse(id) {
         return fetch(COURSE_SERVICE_URL + "/" + id,{method:"DELETE"})
-            .then(response => response);
+            .then(response => response.json());
     }
 }
 
