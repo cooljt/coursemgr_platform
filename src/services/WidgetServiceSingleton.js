@@ -1,6 +1,6 @@
 
-const TOPIC_URL = "http://localhost:8080/api/topic/";
-const WIDGET_URL = "http://localhost:8080/api/widget";
+const TOPIC_URL = "http://course-server-2018fall/api/topic/";
+const WIDGET_URL = "http://course-server-2018fall/api/widget";
 
 export default class WidgetServiceSingleton {
 

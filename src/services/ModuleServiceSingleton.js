@@ -1,4 +1,4 @@
-const MODULE_SERVIVE_URL = "http://localhost:8080/api";
+const MODULE_SERVIVE_URL = "http://course-server-2018fall/api";
 
 export default class ModuleServiceSingleton {
     static createModule(cid,module) {

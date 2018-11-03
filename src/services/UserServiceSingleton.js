@@ -1,5 +1,5 @@
 
-const USER_SERVICE_URL = "http://localhost:8080/api";
+const USER_SERVICE_URL = "http://course-server-2018fall/api";
 
 export default class UserServiceSigleton {
     static register(user) {

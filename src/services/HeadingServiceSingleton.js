@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://localhost:8080/api/topic";
-const HEADINGWIDGET_URL = "http://localhost:8080/api/heading/widget";
+const TOPIC_URL = "http://course-server-2018fall/api/topic";
+const HEADINGWIDGET_URL = "http://course-server-2018fall/api/heading/widget";
 
 export default class HeadingServiceSingleton {
     static createHeadingWidget(topicId, headingWidget) {

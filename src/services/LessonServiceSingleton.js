@@ -1,4 +1,4 @@
-const LESSON_SERVIVE_URL = "http://localhost:8080/api";
+const LESSON_SERVIVE_URL = "http://course-server-2018fall/api";
 
 export default class LessonServiceSingleton {
     static createLesson(mid,lesson) {

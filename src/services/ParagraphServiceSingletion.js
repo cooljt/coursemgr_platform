@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://localhost:8080/api/topic";
-const PARAGRAPHWIDGET_URL = "http://localhost:8080/api/paragraph/widget";
+const TOPIC_URL = "http://course-server-2018fall/api/topic";
+const PARAGRAPHWIDGET_URL = "http://course-server-2018fall/api/paragraph/widget";
 
 export default class ParagraphServiceSingleton {
     static createParagraphWidget(topicId, paragraphWidget) {

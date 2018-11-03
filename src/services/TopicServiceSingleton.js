@@ -1,4 +1,4 @@
-const TOPIC_SERVICE_URL = "http://localhost:8080/api";
+const TOPIC_SERVICE_URL = "http://course-server-2018fall/api";
 
 export default class TopicServiceSingleton {
     static createTopic(lid,topic) {

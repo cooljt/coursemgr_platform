@@ -1,6 +1,6 @@
 
-const COURSES_SERVICE_URL = "http://localhost:8080/api/courses";
-const COURSE_SERVICE_URL = "http://localhost:8080/api/course";
+const COURSES_SERVICE_URL = "http://course-server-2018fall/api/courses";
+const COURSE_SERVICE_URL = "http://course-server-2018fall/api/course";
 
 export default class CourseServiceSingleton {
 

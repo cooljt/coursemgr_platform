@@ -1,5 +1,5 @@
-const TOPIC_URL = "http://localhost:8080/api/topic";
-const LINKWIDGET_URL = "http://localhost:8080/api/link/widget";
+const TOPIC_URL = "http://course-server-2018fall/api/topic";
+const LINKWIDGET_URL = "http://course-server-2018fall/api/link/widget";
 
 export default class LinkServiceSingleton {
     static createLinkWidget(topicId, linkWidget) {
