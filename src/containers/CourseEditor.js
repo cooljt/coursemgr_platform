@@ -42,7 +42,7 @@ export default class CourseEditor extends React.Component {
             selectedModule: selectedModule,
             selectedLesson: selectedLesson,
             selectedTopic: selectedTopic,
-            widgets:[]
+            widgets:selectedTopic.widgets
         }
     }
 
@@ -55,7 +55,8 @@ export default class CourseEditor extends React.Component {
         if (module.lessons.length !== 0) {
             this.setState({selectedLesson:module.lessons[0]});
             if (module.lessons[0].topics.length !== 0) {
-                this.setState({selectedTopic:module.lessons[0].topics[0]})
+                this.setState({selectedTopic:module.lessons[0].topics[0]});
+                this.setState({widgets:module.lessons[0].topics[0].widgets});
             }
             else {
                 this.setState({selectedTopics:{title:"",widgets:[]}});
@@ -68,7 +69,7 @@ export default class CourseEditor extends React.Component {
 
     selectLesson = (lesson) => {
         this.setState({selectedLesson:lesson});
-        lesson.topics.length !==0 ? this.setState({selectedTopic:lesson.topics[0]})
+        lesson.topics.length !==0 ? this.setState({selectedTopic:lesson.topics[0],widgets:lesson.topics[0].widgets})
                                     :this.setState({selectedTopic:{title:"",widgets:[]}});
     };
 
